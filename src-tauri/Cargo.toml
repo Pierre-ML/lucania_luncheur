@@ -1,6 +1,6 @@
 [package]
 name = "lanceur"
-version = "0.1.2"
+version = "0.1.3"
 description = "Lucania Luncheur - installe, met à jour et lance les applications de Pierre-ML"
 authors = ["Pierre Mouilleseaux Lhuillier"]
 license = "MIT"
