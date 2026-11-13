@@ -387,11 +387,11 @@ mod tests {
     assert_eq!(lucania.wait_pid_arg.as_deref(), Some("/LUCANIA_WAITPID="));
     assert_eq!(lucania.max_bytes, 500 * 1024 * 1024);
     // Clé de désinstallation, exe et identifiant : ceux des releases publiées (productName et
-    // mainBinaryName des tauri.conf.json aux tags v5.1.2 / v1.0.1 / v1.0.1), pas ceux de main.
+    // mainBinaryName des tauri.conf.json aux tags v1.0.0 / v1.0.2 / v1.0.2), pas ceux de main.
     let by_id = |id: &str| apps.iter().find(|a| a.id == id).unwrap();
     let (scrap, media, eco) = (by_id("lucascrap"), by_id("lucamedia"), by_id("lucaaudit"));
-    assert_eq!((scrap.product_name.as_str(), scrap.exe.as_str()), ("Media Downloader", "media-downloader.exe"));
-    assert_eq!((media.product_name.as_str(), media.exe.as_str(), media.identifier.as_str()), ("Ursa", "ursa.exe", "com.ursa.app"));
+    assert_eq!((scrap.product_name.as_str(), scrap.exe.as_str()), ("Lucascrap", "lucascrap.exe"));
+    assert_eq!((media.product_name.as_str(), media.exe.as_str(), media.identifier.as_str()), ("Lucamedia", "lucamedia.exe", "com.lucamedia.app"));
     assert_eq!((eco.product_name.as_str(), eco.exe.as_str()), ("Luca-Audit", "luca-audit.exe"));
   }
 
