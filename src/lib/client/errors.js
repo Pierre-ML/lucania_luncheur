@@ -17,6 +17,19 @@ export function errorCode(err) {
   return rawError(err).split(':', 1)[0].trim();
 }
 
+/** Détail lisible : clé `common.errors.detail.<détail>`, ou « code N » pour un code de sortie. @param {string} detail */
+function detailText(detail) {
+  const key = `common.errors.detail.${detail}`;
+  if (/^[a-z_]+$/.test(detail) && hasKey(key)) return t(key);
+  if (/^-?\d+$/.test(detail)) return t('common.errors.detail.code', { code: detail });
+  return detail;
+}
+
+/** « Message. » + détail → « Message (détail). » @param {string} text @param {string} detail */
+function withDetail(text, detail) {
+  return `${text.replace(/[.\s]+$/, '')} (${detail}).`;
+}
+
 /** Message lisible pour l'utilisateur. @param {unknown} err */
 export function errorMessage(err) {
   const raw = rawError(err);
@@ -25,7 +38,7 @@ export function errorMessage(err) {
   const detail = index === -1 ? '' : raw.slice(index + 1).trim();
   const key = `common.errors.${code}`;
   if (/^[a-z_]+$/.test(code) && code !== 'generic' && hasKey(key)) {
-    return detail ? `${t(key)} (${detail})` : t(key);
+    return detail ? withDetail(t(key), detailText(detail)) : t(key);
   }
   // Code inconnu : message générique + texte brut
   return `${t('common.errors.generic')} : ${raw}`;

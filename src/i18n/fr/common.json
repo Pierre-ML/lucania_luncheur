@@ -111,6 +111,14 @@
     "still_running": "L’application est encore en cours d’exécution. Ferme-la puis réessaie.",
     "launch_failed": "Impossible de lancer l’application.",
     "dev_mode": "Cette action n’est pas disponible en mode développement.",
+    "detail": {
+      "code": "code {code}",
+      "elevation": "élévation requise",
+      "spawn": "lancement impossible",
+      "timeout": "délai dépassé",
+      "not_detected": "application introuvable après installation",
+      "version": "version inchangée après la mise à jour"
+    },
     "io": "Erreur d’accès aux fichiers de l’ordinateur."
   },
   "footer": {

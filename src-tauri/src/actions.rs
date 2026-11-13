@@ -8,7 +8,8 @@
 //!   désinstallateur de l'installation détectée. Arguments passés un à un, jamais de shell.
 //! - Événement `app-progress` : `{ id, phase: "download" | "closing" | "running", downloaded, total }`.
 //! - Erreurs : codes stables (`unknown_app`, `busy`, `not_installed`, `already_installed`,
-//!   `installer_failed[:détail]`, `uninstall_failed[:détail]`, `still_running`, `launch_failed`,
+//!   `installer_failed[:détail]` (détail : code de sortie, `elevation`, `spawn`, `timeout`,
+//!   `not_detected`, `version`), `uninstall_failed[:détail]`, `still_running`, `launch_failed`,
 //!   `cancelled`, plus ceux de `download` et `github`).
 
 use std::collections::{HashMap, HashSet};
@@ -273,7 +274,7 @@ pub async fn app_install(app: AppHandle, id: String) -> Result<AppView, String> 
     emit(&app, &def.id, "running", 0, None);
     run_installer(&path, &def.install_args).await?;
     if detect::detect(&def).is_none() {
-      return Err("installer_failed".into());
+      return Err("installer_failed:not_detected".into());
     }
   }
   view(&app, &def)
@@ -309,7 +310,7 @@ pub async fn app_update(app: AppHandle, id: String) -> Result<AppView, String> {
 
     emit(&app, &def.id, "running", 0, None);
     run_installer(&path, &args).await?;
-    let after = detect::detect(&def).ok_or_else(|| "installer_failed".to_string())?;
+    let after = detect::detect(&def).ok_or_else(|| "installer_failed:not_detected".to_string())?;
     let latest = app.state::<Releases>().cached(&def.repo).map(|r| r.version);
     let changed = after.version != before.version;
     let reached = matches!((&latest, &after.version), (Some(l), Some(v)) if !github::is_newer(l, v));

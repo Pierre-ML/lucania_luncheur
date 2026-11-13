@@ -111,6 +111,14 @@
     "still_running": "The application is still running. Close it and try again.",
     "launch_failed": "Could not launch the application.",
     "dev_mode": "This action is not available in development mode.",
+    "detail": {
+      "code": "code {code}",
+      "elevation": "administrator rights required",
+      "spawn": "could not start",
+      "timeout": "timed out",
+      "not_detected": "application not found after installation",
+      "version": "version unchanged after the update"
+    },
     "io": "Error accessing files on this computer."
   },
   "footer": {
