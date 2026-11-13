@@ -9,7 +9,7 @@ name: Build Windows
 #     SIGNPATH_PROJECT_SLUG                  slug du projet
 #     SIGNPATH_SIGNING_POLICY_SLUG           slug de la politique de signature
 #     SIGNPATH_ARTIFACT_CONFIGURATION_SLUG   slug de la configuration d'artefact
-# La configuration d'artefact SignPath doit signer les deux exe (Lanceur-Setup.exe et Lanceur-Update.exe)
+# La configuration d'artefact SignPath doit signer les deux exe (Lucania-Luncheur-Setup.exe et Lucania-Luncheur-Update.exe)
 # à la racine de l'artefact « lanceur-unsigned ».
 
 on:
@@ -81,7 +81,7 @@ jobs:
         run: |
           d="src-tauri/target/release/bundle/release"
           missing=0
-          for f in "Lanceur-Setup.exe" "Lanceur-Update.exe"; do
+          for f in "Lucania-Luncheur-Setup.exe" "Lucania-Luncheur-Update.exe"; do
             if [ ! -f "$d/$f" ]; then
               echo "::error::Fichier manquant : $d/$f"
               missing=1
@@ -110,8 +110,8 @@ jobs:
         with:
           name: lanceur-unsigned
           path: |
-            src-tauri/target/release/bundle/release/Lanceur-Setup.exe
-            src-tauri/target/release/bundle/release/Lanceur-Update.exe
+            src-tauri/target/release/bundle/release/Lucania-Luncheur-Setup.exe
+            src-tauri/target/release/bundle/release/Lucania-Luncheur-Update.exe
 
       - name: Signer avec SignPath
         if: steps.signpath.outputs.enabled == 'true'
@@ -132,20 +132,20 @@ jobs:
         run: |
           d="src-tauri/target/release/bundle/release"
           missing=0
-          for f in "Lanceur-Setup.exe" "Lanceur-Update.exe"; do
+          for f in "Lucania-Luncheur-Setup.exe" "Lucania-Luncheur-Update.exe"; do
             if [ ! -s "signed/$f" ]; then
               echo "::error::Fichier signé manquant : signed/$f"
               missing=1
             fi
           done
           [ $missing -eq 0 ] || exit 1
-          cp -f signed/Lanceur-Setup.exe signed/Lanceur-Update.exe "$d/"
+          cp -f signed/Lucania-Luncheur-Setup.exe signed/Lucania-Luncheur-Update.exe "$d/"
 
       - uses: softprops/action-gh-release@v2
         if: steps.tag.outputs.exists == 'false'
         with:
           tag_name: v${{ steps.version.outputs.version }}
-          name: Lanceur v${{ steps.version.outputs.version }}
+          name: Lucania Luncheur v${{ steps.version.outputs.version }}
           files: |
-            src-tauri/target/release/bundle/release/Lanceur-Setup.exe
-            src-tauri/target/release/bundle/release/Lanceur-Update.exe
+            src-tauri/target/release/bundle/release/Lucania-Luncheur-Setup.exe
+            src-tauri/target/release/bundle/release/Lucania-Luncheur-Update.exe

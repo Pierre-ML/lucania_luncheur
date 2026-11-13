@@ -124,7 +124,7 @@ Var LanceurLaunched
 ; LANCEUR: lance l'app installée. installMode currentUser : l'installateur n'est pas élevé, Exec
 ; LANCEUR: (CreateProcess direct) suffit. nsis_tauri_utils::RunAsUser (CreateProcessWithTokenW avec le
 ; LANCEUR: jeton d'explorer, appel au service seclogon) ne sert qu'à quitter l'élévation : sur la page de
-; LANCEUR: fin, cet appel bloquait la fenêtre (« Lanceur-Update.exe a cessé d'interagir », AppHangXProcB1)
+; LANCEUR: fin, cet appel bloquait la fenêtre (« Lucania-Luncheur-Update.exe a cessé d'interagir », AppHangXProcB1)
 ; LANCEUR: et laissait un lanceur.exe à moitié créé. Conservé pour les autres modes d'installation.
 !macro LANCEUR_RUN_APP
   !if "${INSTALLMODE}" == "currentUser"
@@ -469,10 +469,10 @@ LangString ^FileError ${LANG_FRENCH} "Impossible d'écrire le fichier :$\r$\n$\r
 LangString ^FileError_NoIgnore ${LANG_FRENCH} "Impossible d'écrire le fichier :$\r$\n$\r$\n$0$\r$\n$\r$\nVotre antivirus bloque probablement l'installation de ${PRODUCTNAME} (le programme n'est pas encore signé). Ajoutez une exception pour ce programme d'installation et pour le dossier $INSTDIR, puis cliquez sur Recommencer.$\r$\n$\r$\nAnnuler arrête l'installation."
 !ifndef LANCEUR_UPDATER
 ; LANCEUR: setup lancé alors que Lanceur est déjà installé
-LangString lanceurAlreadyInstalledUseUpdate ${LANG_FRENCH} "${PRODUCTNAME} est déjà installé sur cet ordinateur.$\r$\n$\r$\nPour le mettre à jour, utilisez le fichier Lanceur-Update.exe (disponible sur la page des versions, à côté de ce programme d'installation)."
+LangString lanceurAlreadyInstalledUseUpdate ${LANG_FRENCH} "${PRODUCTNAME} est déjà installé sur cet ordinateur.$\r$\n$\r$\nPour le mettre à jour, utilisez le fichier Lucania-Luncheur-Update.exe (disponible sur la page des versions, à côté de ce programme d'installation)."
 !else
 ; LANCEUR: update : refus (pas installé, version plus récente), titres des pages
-LangString lanceurNotInstalledUseSetup ${LANG_FRENCH} "${PRODUCTNAME} n'est pas installé sur cet ordinateur.$\r$\n$\r$\nUtilisez d'abord le programme d'installation Lanceur-Setup.exe (disponible sur la page des versions)."
+LangString lanceurNotInstalledUseSetup ${LANG_FRENCH} "${PRODUCTNAME} n'est pas installé sur cet ordinateur.$\r$\n$\r$\nUtilisez d'abord le programme d'installation Lucania-Luncheur-Setup.exe (disponible sur la page des versions)."
 LangString lanceurNewerInstalled ${LANG_FRENCH} "Une version plus récente de ${PRODUCTNAME} ($LanceurInstalledVersion) est déjà installée.$\r$\n$\r$\nCette mise à jour (version ${VERSION}) n'est pas nécessaire."
 LangString lanceurUpdateTitle ${LANG_FRENCH} "Mise à jour de ${PRODUCTNAME}"
 LangString lanceurUpdateSubtitle ${LANG_FRENCH} "Installation de la version ${VERSION}. Vos réglages sont conservés."
@@ -492,10 +492,10 @@ LangString ^FileError ${LANG_ENGLISH} "Unable to write the file:$\r$\n$\r$\n$0$\
 LangString ^FileError_NoIgnore ${LANG_ENGLISH} "Unable to write the file:$\r$\n$\r$\n$0$\r$\n$\r$\nYour antivirus is probably blocking the installation of ${PRODUCTNAME} (the program is not signed yet). Add an exception for this installer and for the folder $INSTDIR, then click Retry.$\r$\n$\r$\nCancel stops the installation."
 !ifndef LANCEUR_UPDATER
 ; LANCEUR: setup lancé alors que Lanceur est déjà installé
-LangString lanceurAlreadyInstalledUseUpdate ${LANG_ENGLISH} "${PRODUCTNAME} is already installed on this computer.$\r$\n$\r$\nTo update it, use the file Lanceur-Update.exe (available on the releases page, next to this installer)."
+LangString lanceurAlreadyInstalledUseUpdate ${LANG_ENGLISH} "${PRODUCTNAME} is already installed on this computer.$\r$\n$\r$\nTo update it, use the file Lucania-Luncheur-Update.exe (available on the releases page, next to this installer)."
 !else
 ; LANCEUR: update : refus (pas installé, version plus récente), titres des pages
-LangString lanceurNotInstalledUseSetup ${LANG_ENGLISH} "${PRODUCTNAME} is not installed on this computer.$\r$\n$\r$\nPlease use the installer Lanceur-Setup.exe first (available on the releases page)."
+LangString lanceurNotInstalledUseSetup ${LANG_ENGLISH} "${PRODUCTNAME} is not installed on this computer.$\r$\n$\r$\nPlease use the installer Lucania-Luncheur-Setup.exe first (available on the releases page)."
 LangString lanceurNewerInstalled ${LANG_ENGLISH} "A newer version of ${PRODUCTNAME} ($LanceurInstalledVersion) is already installed.$\r$\n$\r$\nThis update (version ${VERSION}) is not needed."
 LangString lanceurUpdateTitle ${LANG_ENGLISH} "${PRODUCTNAME} Update"
 LangString lanceurUpdateSubtitle ${LANG_ENGLISH} "Installing version ${VERSION}. Your settings are kept."

@@ -5,7 +5,6 @@
   "header": {
     "refresh": "Actualiser",
     "updateAll": "Tout mettre à jour",
-    "theme": "Thème",
     "language": "Langue"
   },
   "toolbar": {
@@ -22,17 +21,17 @@
     "reset": "Réinitialiser"
   },
   "selfUpdate": {
-    "title": "Mettre à jour le Lanceur",
-    "available": "Mise à jour du Lanceur disponible ({latest})",
-    "confirmTitle": "Mettre à jour le Lanceur ?",
-    "confirmMessage": "La version {latest} va remplacer la version {current}. Le Lanceur va se fermer puis redémarrer.",
+    "title": "Mettre à jour Lucania Luncheur",
+    "available": "Mise à jour de Lucania Luncheur disponible ({latest})",
+    "confirmTitle": "Mettre à jour Lucania Luncheur ?",
+    "confirmMessage": "La version {latest} va remplacer la version {current}. Lucania Luncheur va se fermer puis redémarrer.",
     "confirmOk": "Mettre à jour",
     "downloading": "Téléchargement…",
     "progress": "{percent} ({done} sur {total} Mo)",
     "progressNoTotal": "{done} Mo téléchargés",
     "launching": "Installation en cours…",
-    "upToDate": "Le Lanceur est à jour ({current}).",
-    "progressLabel": "Progression de la mise à jour du Lanceur"
+    "upToDate": "Lucania Luncheur est à jour ({current}).",
+    "progressLabel": "Progression de la mise à jour de Lucania Luncheur"
   },
   "empty": {
     "none": "Aucune application disponible pour le moment.",
@@ -121,5 +120,12 @@
   },
   "demo": {
     "noAction": "Mode démo : aucune action n’est exécutée."
+  },
+  "selfUninstall": {
+    "button": "Désinstaller Lucania Luncheur",
+    "confirmTitle": "Désinstaller Lucania Luncheur ?",
+    "confirmMessage": "Lucania Luncheur va se fermer et son désinstalleur va s'ouvrir. Les applications déjà installées ne sont pas supprimées.",
+    "confirmAction": "Désinstaller",
+    "failed": "Impossible de lancer la désinstallation."
   }
 }

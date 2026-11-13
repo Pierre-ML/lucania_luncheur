@@ -8,6 +8,7 @@
 //! - `process` : processus en cours, fermeture propre (`WM_CLOSE`), lancement détaché ;
 //! - `actions` : commandes install / update / uninstall / launch / cancel ;
 //! - `selfupdate` : mise à jour du Lanceur lui-même ;
+//! - `selfuninstall` : désinstallation du Lanceur lui-même ;
 //! - `config` : préférences de l'interface (langue, thème).
 
 #[cfg(not(windows))]
@@ -22,6 +23,7 @@ mod download;
 mod github;
 mod process;
 mod registry;
+mod selfuninstall;
 mod selfupdate;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -53,6 +55,7 @@ pub fn run() {
       actions::app_cancel,
       selfupdate::self_check_update,
       selfupdate::self_install_update,
+      selfuninstall::self_uninstall,
       config::config_get,
       config::config_set,
     ])

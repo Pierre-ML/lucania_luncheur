@@ -1,7 +1,7 @@
 //! Mise à jour du Lanceur lui-même (même mécanisme que l'updater de Lucania) : compare la version
-//! installée à la dernière release GitHub, puis télécharge et lance `Lanceur-Update.exe`.
+//! installée à la dernière release GitHub, puis télécharge et lance `Lucania-Luncheur-Update.exe`.
 //!
-//! - `self_check_update` : interroge l'API GitHub (release la plus récente de `Pierre-ML/Lanceur`).
+//! - `self_check_update` : interroge l'API GitHub (release la plus récente de `Pierre-ML/lucania_luncheur`).
 //! - `self_install_update` : refusé en dev (`dev_mode`) et pendant une opération sur une app
 //!   (`busy`). Téléchargement en flux (300 Mo maximum, contrôle « MZ ») avec l'événement
 //!   `self-update-progress` (`{ downloaded, total }`, au plus ~10 par seconde, puis un dernier à
@@ -22,9 +22,9 @@ use tauri::{Emitter, Manager};
 use crate::actions::Ops;
 use crate::{download, github, process};
 
-const REPO: &str = "Pierre-ML/Lanceur";
-const UPDATER_URL: &str = "https://github.com/Pierre-ML/Lanceur/releases/latest/download/Lanceur-Update.exe";
-const UPDATER_FILE: &str = "Lanceur-Update.exe";
+const REPO: &str = "Pierre-ML/lucania_luncheur";
+const UPDATER_URL: &str = "https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lucania-Luncheur-Update.exe";
+const UPDATER_FILE: &str = "Lucania-Luncheur-Update.exe";
 /// Taille maximale acceptée pour l'exe de mise à jour.
 const MAX_BYTES: u64 = 300 * 1024 * 1024;
 const PROGRESS_EVENT: &str = "self-update-progress";

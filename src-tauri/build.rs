@@ -13,6 +13,7 @@ fn main() {
         "app_cancel",
         "self_check_update",
         "self_install_update",
+        "self_uninstall",
         "config_get",
         "config_set",
       ])),

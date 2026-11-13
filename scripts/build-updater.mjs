@@ -1,4 +1,4 @@
-// Compile l'exe de MISE À JOUR (Lanceur_<version>_x64-update.exe) après `tauri build`.
+// Compile l'exe de MISE À JOUR (Lucania Luncheur_<version>_x64-update.exe) après `tauri build`.
 //
 // tauri build rend notre template NSIS (src-tauri/windows/installer.nsi) dans
 // src-tauri/target/release/nsis/x64/installer.nsi (avec utils.nsh, les fichiers de langue, etc.)

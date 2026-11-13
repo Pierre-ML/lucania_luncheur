@@ -10,6 +10,7 @@ import { call, inTauri, onEvent } from './tauri.js';
 import { initTheme } from './theme.js';
 import { initToolbar } from './toolbar.js';
 import { initSelfUpdate } from './update.js';
+import { initSelfUninstall } from './uninstall.js';
 import { errorMessage } from './errors.js';
 import { toast } from './toast.js';
 
@@ -43,6 +44,7 @@ async function start() {
 
   void loadPrefs();
   initSelfUpdate();
+  initSelfUninstall();
   await onEvent('app-progress', (p) => setProgress(p.id, p));
 
   // Affichage immédiat (sans réseau), puis actualisation

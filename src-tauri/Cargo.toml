@@ -1,10 +1,10 @@
 [package]
 name = "lanceur"
 version = "0.1.1"
-description = "Lanceur - installe, met à jour et lance les applications de Pierre-ML"
+description = "Lucania Luncheur - installe, met à jour et lance les applications de Pierre-ML"
 authors = ["Pierre Mouilleseaux Lhuillier"]
 license = "MIT"
-repository = "https://github.com/Pierre-ML/Lanceur"
+repository = "https://github.com/Pierre-ML/lucania_luncheur"
 edition = "2024"
 rust-version = "1.90"
 

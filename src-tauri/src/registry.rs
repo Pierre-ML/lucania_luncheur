@@ -20,7 +20,7 @@ use serde::{Deserialize, Serialize};
 /// Registre embarqué dans l'exe (contrat avec le dépôt).
 const EMBEDDED: &str = include_str!("../../apps.json");
 /// Registre distant : même format, lu sur la branche `main` du dépôt du Lanceur.
-pub const REMOTE_URL: &str = "https://raw.githubusercontent.com/Pierre-ML/Lanceur/main/apps.json";
+pub const REMOTE_URL: &str = "https://raw.githubusercontent.com/Pierre-ML/lucania_luncheur/main/apps.json";
 /// Taille maximale du registre distant.
 pub const REMOTE_MAX_BYTES: u64 = 256 * 1024;
 /// Durée de validité du registre distant en mémoire.
@@ -379,9 +379,9 @@ mod tests {
   #[test]
   fn registre_embarque_valide() {
     let apps = embedded();
-    assert_eq!(apps.len(), 4, "les 4 entrées de apps.json doivent être valides");
+    assert_eq!(apps.len(), 7, "les 7 entrées de apps.json doivent être valides");
     let enabled: Vec<_> = apps.iter().filter(|a| a.enabled).map(|a| a.id.as_str()).collect();
-    assert_eq!(enabled, ["lucania"]);
+    assert_eq!(enabled, ["lucania", "lucascrap", "lucamedia", "ecoaudit"]);
     let lucania = &apps[0];
     assert_eq!(lucania.exe, "lucania.exe");
     assert_eq!(lucania.wait_pid_arg.as_deref(), Some("/LUCANIA_WAITPID="));
@@ -488,7 +488,7 @@ mod tests {
 
     let registry = Registry::new();
     assert!(!registry.apply_remote(&only_foreign.to_string()));
-    assert_eq!(registry.all().len(), 4, "registre embarqué conservé");
+    assert_eq!(registry.all().len(), 7, "registre embarqué conservé");
     assert!(registry.apply_remote(&json));
     assert!(registry.find("autre").is_some() && registry.find("lucania").is_none());
     assert!(!registry.needs_refresh(false) && registry.needs_refresh(true));

@@ -12,8 +12,8 @@
 ;   (la case du template est elle aussi ignorée avec /UPDATE).
 ;
 ; Mises à jour : notre template (windows/installer.nsi) ne lance aucun désinstallateur. Le setup
-; (Lanceur-Setup.exe) refuse de s'exécuter si le Lanceur est déjà installé ; l'exe de mise à jour
-; (Lanceur-Update.exe, compilé avec /DLANCEUR_UPDATER par scripts/build-updater.mjs) copie les fichiers
+; (Lucania-Luncheur-Setup.exe) refuse de s'exécuter si le Lanceur est déjà installé ; l'exe de mise à jour
+; (Lucania-Luncheur-Update.exe, compilé avec /DLANCEUR_UPDATER par scripts/build-updater.mjs) copie les fichiers
 ; par-dessus l'installation existante. Les données ne sont donc jamais touchées par une mise à jour.
 ;
 ; Ne pas renommer /UPDATE : c'est le drapeau que connaissent les désinstallateurs déjà installés.

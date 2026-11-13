@@ -301,7 +301,7 @@ mod tests {
   #[test]
   fn hotes_autorises() {
     assert!(allowed_host(&Url::parse("https://objects.githubusercontent.com/x").unwrap()));
-    assert!(allowed_host(&Url::parse("https://raw.githubusercontent.com/Pierre-ML/Lanceur/main/apps.json").unwrap()));
+    assert!(allowed_host(&Url::parse("https://raw.githubusercontent.com/Pierre-ML/lucania_luncheur/main/apps.json").unwrap()));
     assert!(allowed_host(&Url::parse("https://github.com/Pierre-ML/Lucania").unwrap()));
     assert!(allowed_host(&Url::parse("https://api.github.com/repos/x/y").unwrap()));
     assert!(!allowed_host(&Url::parse("http://github.com/").unwrap()));

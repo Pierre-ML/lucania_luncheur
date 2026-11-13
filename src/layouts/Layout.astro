@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 interface Props { title?: string }
-const { title = 'Lanceur' } = Astro.props;
+const { title = 'Lucania Luncheur' } = Astro.props;
 ---
 <!doctype html>
 <html lang="fr" data-theme="lucania">
@@ -11,13 +11,11 @@ const { title = 'Lanceur' } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<!-- Thème et langue appliqués avant le premier rendu (cache local), pour éviter un flash. -->
+		<!-- Thème et langue appliqués avant le premier rendu (cache local pour la langue), pour éviter un flash. -->
 		<script is:inline>
 			try {
 				var root = document.documentElement;
-				var theme = localStorage.getItem('lanceur.theme') || 'lucania';
-				if (theme === 'system') theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-				root.dataset.theme = theme;
+				root.dataset.theme = 'lucania';
 				var lang = localStorage.getItem('lanceur.lang');
 				if (lang !== 'fr' && lang !== 'en') lang = (navigator.language || '').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
 				root.lang = lang;

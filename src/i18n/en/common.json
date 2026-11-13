@@ -5,7 +5,6 @@
   "header": {
     "refresh": "Refresh",
     "updateAll": "Update all",
-    "theme": "Theme",
     "language": "Language"
   },
   "toolbar": {
@@ -22,17 +21,17 @@
     "reset": "Reset"
   },
   "selfUpdate": {
-    "title": "Update the Launcher",
-    "available": "Launcher update available ({latest})",
-    "confirmTitle": "Update the Launcher?",
-    "confirmMessage": "Version {latest} will replace version {current}. The Launcher will close and restart.",
+    "title": "Update Lucania Luncheur",
+    "available": "Lucania Luncheur update available ({latest})",
+    "confirmTitle": "Update Lucania Luncheur?",
+    "confirmMessage": "Version {latest} will replace version {current}. Lucania Luncheur will close and restart.",
     "confirmOk": "Update",
     "downloading": "Downloading…",
     "progress": "{percent} ({done} of {total} MB)",
     "progressNoTotal": "{done} MB downloaded",
     "launching": "Installing…",
-    "upToDate": "The Launcher is up to date ({current}).",
-    "progressLabel": "Launcher update progress"
+    "upToDate": "Lucania Luncheur is up to date ({current}).",
+    "progressLabel": "Lucania Luncheur update progress"
   },
   "empty": {
     "none": "No applications available at the moment.",
@@ -121,5 +120,12 @@
   },
   "demo": {
     "noAction": "Demo mode: no action is performed."
+  },
+  "selfUninstall": {
+    "button": "Uninstall Lucania Luncheur",
+    "confirmTitle": "Uninstall Lucania Luncheur?",
+    "confirmMessage": "Lucania Luncheur will close and its uninstaller will open. Apps already installed are not removed.",
+    "confirmAction": "Uninstall",
+    "failed": "Could not start the uninstaller."
   }
 }

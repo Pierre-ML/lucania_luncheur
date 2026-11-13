@@ -1,8 +1,9 @@
 ---
 import { t } from '../lib/client/i18n.js';
 ---
-<!-- Pied de page fin : nombre d'applications (rempli par toolbar.js) et plate-forme -->
+<!-- Pied de page fin : nombre d'applications (rempli par toolbar.js), désinstallation du lanceur (Tauri seulement) et plate-forme -->
 <footer class="mono-label flex shrink-0 items-center justify-between gap-4 border-t border-border px-4 py-3 text-muted sm:px-6">
 	<span data-app-count aria-live="polite"></span>
+	<button type="button" hidden data-self-uninstall class="cursor-pointer underline-offset-2 transition-colors hover:text-base-content hover:underline focus-visible:underline" data-i18n="common.selfUninstall.button">{t('common.selfUninstall.button')}</button>
 	<span data-i18n="common.footer.platform">{t('common.footer.platform')}</span>
 </footer>

@@ -6,7 +6,7 @@ const version = import.meta.env.LANCEUR_VERSION;
 <header class="flex shrink-0 items-stretch border-b border-border bg-bg">
 	<div class="flex min-w-0 flex-1 items-center gap-3 px-4 sm:px-6">
 		<img src="/favicon.svg" alt="" width="28" height="28" class="size-7 shrink-0" />
-		<h1 class="mono-label text-sm font-bold tracking-[0.28em]">Lanceur</h1>
+		<h1 class="mono-label text-sm font-bold tracking-[0.28em]">Lucania Luncheur</h1>
 		<span class="mono-label text-muted">v{version}</span>
 	</div>
 
@@ -19,10 +19,6 @@ const version = import.meta.env.LANCEUR_VERSION;
 				</svg>
 				<span data-refresh-spinner hidden class="loading loading-spinner loading-xs" aria-hidden="true"></span>
 			</button>
-		</div>
-
-		<div class="flex items-center border-l border-border px-2">
-			<select data-theme-select data-i18n-label="common.header.theme" aria-label={t('common.header.theme')} class="select select-ghost mono-label h-10 min-h-10 w-auto"></select>
 		</div>
 
 		<div class="flex items-center border-l border-border px-2">

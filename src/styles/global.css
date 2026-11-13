@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light, dark, dim, night, nord, dracula, cupcake, business, coffee, sunset, emerald;
+  themes: false;
   exclude: rootscrollgutter;
 }
 @plugin "daisyui/theme" {
@@ -54,15 +54,9 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-/* Variable intermédiaire, évaluée dans chaque portée de thème.
-   Par défaut (thèmes daisyUI) : dérivée des couleurs du thème. */
+/* Variable intermédiaire, évaluée dans la portée du thème Lucania */
 @layer base {
   :root,
-  [data-theme] {
-    --app-muted: color-mix(in oklab, var(--color-base-content) 58%, var(--color-base-100));
-  }
-  /* Thème Lucania : valeur exacte d'origine */
-  :root:not([data-theme]),
   [data-theme="lucania"] {
     --app-muted: #8e8e94;
   }
@@ -75,22 +69,10 @@
   * { scrollbar-width: thin; scrollbar-color: var(--color-border) transparent; }
 }
 
-/* Menus déroulants natifs (<select>) lisibles dans tous les thèmes */
+/* Menus déroulants natifs (<select>) lisibles */
 @layer base {
-  /* Schéma de couleurs par thème : le popup natif suit le bon schéma */
-  :root:not([data-theme]),
-  [data-theme="lucania"],
-  [data-theme="dark"],
-  [data-theme="dim"],
-  [data-theme="night"],
-  [data-theme="dracula"],
-  [data-theme="business"],
-  [data-theme="coffee"],
-  [data-theme="sunset"] { color-scheme: dark; }
-  [data-theme="light"],
-  [data-theme="nord"],
-  [data-theme="cupcake"],
-  [data-theme="emerald"] { color-scheme: light; }
+  :root,
+  [data-theme="lucania"] { color-scheme: dark; }
 
   select option,
   select optgroup {

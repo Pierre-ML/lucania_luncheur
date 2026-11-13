@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "Lanceur",
+  "productName": "Lucania Luncheur",
   "version": "0.1.1",
   "identifier": "com.lanceur.desktop",
   "build": {
@@ -13,7 +13,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "Lanceur",
+        "title": "Lucania Luncheur",
         "width": 1100,
         "height": 720,
         "minWidth": 760,
@@ -33,7 +33,7 @@
     "copyright": "© 2026 Pierre Mouilleseaux Lhuillier",
     "shortDescription": "Installe, met à jour et lance les applications de Pierre-ML",
     "longDescription": "Installe, met à jour et lance les applications de Pierre-ML",
-    "homepage": "https://github.com/Pierre-ML/Lanceur",
+    "homepage": "https://github.com/Pierre-ML/lucania_luncheur",
     "targets": ["nsis"],
     "icon": [
       "icons/32x32.png",

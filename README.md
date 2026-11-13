@@ -1,5 +1,5 @@
-<div align="center"><img src="public/favicon.svg" alt="Lanceur" width="96" /><h1>Lanceur</h1><p>Installez, mettez à jour et lancez vos applications Windows depuis un seul endroit.<br/>Install, update and launch your Windows apps from one place.</p>
-<a href="https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lanceur-Setup.exe"><b>⬇ Télécharger pour Windows · Download for Windows</b></a><br/><sub>setup pour installer · update pour mettre à jour / setup to install · update to update · <a href="https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lanceur-Update.exe">Lanceur-Update.exe</a> · <a href="https://github.com/Pierre-ML/lucania_luncheur/releases/latest">releases</a></sub></div>
+<div align="center"><img src="public/favicon.svg" alt="Lucania Luncheur" width="96" /><h1>Lucania Luncheur</h1><p>Installez, mettez à jour et lancez vos applications Windows depuis un seul endroit.<br/>Install, update and launch your Windows apps from one place.</p>
+<a href="https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lucania-Luncheur-Setup.exe"><b>⬇ Télécharger pour Windows · Download for Windows</b></a><br/><sub>setup pour installer · update pour mettre à jour / setup to install · update to update · <a href="https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lucania-Luncheur-Update.exe">Lucania-Luncheur-Update.exe</a> · <a href="https://github.com/Pierre-ML/lucania_luncheur/releases/latest">releases</a></sub></div>
 
 <p align="center">
 <a href="https://github.com/Pierre-ML/lucania_luncheur/releases/latest"><img src="https://img.shields.io/github/v/release/Pierre-ML/lucania_luncheur" alt="Dernière release" /></a>
@@ -18,15 +18,15 @@
 
 ## Présentation
 
-Le Lanceur est une application Windows (Tauri v2, interface Astro) qui liste des applications publiées sur GitHub Releases. Pour chaque application, il affiche si elle est installée et quelle est la dernière version disponible. Il permet de l'installer, de la mettre à jour, de la lancer ou de la désinstaller.
+Lucania Luncheur est une application Windows (Tauri v2, interface Astro) qui liste des applications publiées sur GitHub Releases. Pour chaque application, il affiche si elle est installée et quelle est la dernière version disponible. Il permet de l'installer, de la mettre à jour, de la lancer ou de la désinstaller.
 
-Le loup est l'emblème du Lanceur.
+Le loup est l'emblème de Lucania Luncheur.
 
-Le Lanceur s'installe pour votre compte Windows, avec un installateur NSIS, sans droits administrateur. Il se met à jour avec `Lanceur-Update.exe`.
+Lucania Luncheur s'installe pour votre compte Windows, avec un installateur NSIS, sans droits administrateur. Il se met à jour avec `Lucania-Luncheur-Update.exe`.
 
 ## Applications disponibles
 
-Le plus simple est d'installer le Lanceur : il installe et met à jour toutes les applications ci-dessous. Chaque application reste aussi téléchargeable seule, avec son lien direct.
+Le plus simple est d'installer Lucania Luncheur : il installe et met à jour toutes les applications ci-dessous. Chaque application reste aussi téléchargeable seule, avec son lien direct.
 
 | | Application | Description | Téléchargement |
 | --- | --- | --- | --- |
@@ -43,18 +43,18 @@ Le plus simple est d'installer le Lanceur : il installe et met à jour toutes le
 - ▶️ Lancement d'une application installée (« Déjà lancée » si elle tourne)
 - 🗑️ Désinstallation, avec ou sans suppression des données de l'application
 - 🔎 Filtres (toutes, installées, mises à jour, non installées) et champ de recherche
-- 🔁 Mise à jour du Lanceur depuis l'application, après confirmation
+- 🔁 Mise à jour de Lucania Luncheur depuis l'application, après confirmation
 - 🛡️ Installation pour l'utilisateur courant, sans droits administrateur
-- 🆕 Ajout d'une application sans nouvelle version du Lanceur (voir « Ajouter une application »)
+- 🆕 Ajout d'une application sans nouvelle version de Lucania Luncheur (voir « Ajouter une application »)
 - 🎨 13 thèmes (dont « Système »)
 - 🌍 Interface en français et en anglais
 - 📶 Avertissement hors ligne ou en cas de limite de requêtes GitHub
 
 ## Installation
 
-1. Téléchargez [`Lanceur-Setup.exe`](https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lanceur-Setup.exe) (lien direct, dernière release).
-2. Lancez l'installateur. Le Lanceur s'installe pour votre compte Windows. Aucune autorisation administrateur n'est demandée.
-3. Ouvrez le Lanceur, puis installez les applications de votre choix.
+1. Téléchargez [`Lucania-Luncheur-Setup.exe`](https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lucania-Luncheur-Setup.exe) (lien direct, dernière release).
+2. Lancez l'installateur. Lucania Luncheur s'installe pour votre compte Windows. Aucune autorisation administrateur n'est demandée.
+3. Ouvrez Lucania Luncheur, puis installez les applications de votre choix.
 
 Prérequis : Windows 10 ou 11 (64 bits), avec WebView2 (présent sur Windows 11).
 
@@ -64,11 +64,11 @@ Le nom du fichier ne change jamais : une seule exception dans votre antivirus su
 
 ## Mise à jour
 
-Depuis l'application : le Lanceur vérifie la dernière release GitHub et propose la mise à jour. Après confirmation, il télécharge la nouvelle version, se ferme puis redémarre.
+Depuis l'application : Lucania Luncheur vérifie la dernière release GitHub et propose la mise à jour. Après confirmation, il télécharge la nouvelle version, se ferme puis redémarre.
 
-À la main : téléchargez [`Lanceur-Update.exe`](https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lanceur-Update.exe) (lien direct, dernière release) et lancez-le.
+À la main : téléchargez [`Lucania-Luncheur-Update.exe`](https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lucania-Luncheur-Update.exe) (lien direct, dernière release) et lancez-le.
 
-Données du Lanceur : `%LOCALAPPDATA%\com.lanceur.desktop` (config.json, cache WebView2) et `%APPDATA%\com.lanceur.desktop`. Elles ne sont supprimées que par une vraie désinstallation.
+Données de Lucania Luncheur : `%LOCALAPPDATA%\com.lanceur.desktop` (config.json, cache WebView2) et `%APPDATA%\com.lanceur.desktop`. Elles ne sont supprimées que par une vraie désinstallation.
 
 ## Ajouter une application
 
@@ -93,12 +93,12 @@ Modifier seulement `apps.json` à la racine. Un objet par application :
 | `updateArgs` (facultatif) | arguments passés à l'exe de mise à jour |
 | `maxSizeMb` (facultatif) | taille maximale acceptée pour le téléchargement |
 
-Le code (`src-tauri/src/registry.rs`) lit aussi `https://raw.githubusercontent.com/Pierre-ML/Lanceur/main/apps.json` (branche `main`). Si ce fichier est valide, il surcharge le `apps.json` embarqué dans l'app : ajouter une application ne demande alors pas de nouvelle version du Lanceur. Seuls les dépôts des mêmes propriétaires que ceux déjà acceptés sont pris en compte ; les autres entrées sont ignorées. Sinon, ou en cas d'échec, l'app garde le dernier registre valide, à défaut celui embarqué.
+Le code (`src-tauri/src/registry.rs`) lit aussi `https://raw.githubusercontent.com/Pierre-ML/lucania_luncheur/main/apps.json` (branche `main`). Si ce fichier est valide, il surcharge le `apps.json` embarqué dans l'app : ajouter une application ne demande alors pas de nouvelle version de Lucania Luncheur. Seuls les dépôts des mêmes propriétaires que ceux déjà acceptés sont pris en compte ; les autres entrées sont ignorées. Sinon, ou en cas d'échec, l'app garde le dernier registre valide, à défaut celui embarqué.
 
 ### Ce que chaque application doit publier
 
 - Des fichiers à NOM FIXE (sans numéro de version) dans les GitHub Releases du dépôt, correspondant à `setup` et `updater` (par exemple `MonApp-Setup.exe` et `MonApp-Update.exe`), pour que les liens `releases/latest/download/<fichier>` restent valides.
-- Un installateur NSIS en mode currentUser (installation dans `%LOCALAPPDATA%\Programs\<productName>`, clé de désinstallation dans `HKCU`), avec `DisplayVersion` renseigné : le Lanceur en déduit l'état installé et la version.
+- Un installateur NSIS en mode currentUser (installation dans `%LOCALAPPDATA%\Programs\<productName>`, clé de désinstallation dans `HKCU`), avec `DisplayVersion` renseigné : Lucania Luncheur en déduit l'état installé et la version.
 - Un tag `vX.Y.Z` par release.
 
 ## Développement
@@ -113,13 +113,13 @@ Prérequis : Node.js 22, Rust (toolchain stable), WebView2 (présent sur Windows
 | `npm run desktop:build` | `tauri build` + installateurs à nom fixe |
 | `npm run version:set X.Y.Z` | Changer la version dans les 4 fichiers qui la portent |
 
-`npm run desktop:build` produit dans `src-tauri/target/release/bundle/release/` : `Lanceur-Setup.exe` (première installation) et `Lanceur-Update.exe` (mise à jour).
+`npm run desktop:build` produit dans `src-tauri/target/release/bundle/release/` : `Lucania-Luncheur-Setup.exe` (première installation) et `Lucania-Luncheur-Update.exe` (mise à jour).
 
 Version : la source est `src-tauri/tauri.conf.json` ; `package.json`, `package-lock.json` et `src-tauri/Cargo.toml` doivent porter la même (le workflow le vérifie, `version:set` les met à jour ensemble).
 
 ## Release
 
-Le workflow `.github/workflows/build.yml` se lance à chaque push sur `main` : il vérifie que les versions concordent, construit sous Windows, vérifie la présence des deux installateurs, puis publie une release `Lanceur vX.Y.Z` (tag `vX.Y.Z`) avec `Lanceur-Setup.exe` et `Lanceur-Update.exe`, sauf si ce tag existe déjà. Pour sortir une version : `npm run version:set X.Y.Z`, commit, push.
+Le workflow `.github/workflows/build.yml` se lance à chaque push sur `main` : il vérifie que les versions concordent, construit sous Windows, vérifie la présence des deux installateurs, puis publie une release `Lucania Luncheur vX.Y.Z` (tag `vX.Y.Z`) avec `Lucania-Luncheur-Setup.exe` et `Lucania-Luncheur-Update.exe`, sauf si ce tag existe déjà. Pour sortir une version : `npm run version:set X.Y.Z`, commit, push.
 
 ### Signature SignPath (facultative)
 
@@ -128,7 +128,7 @@ Tant que rien n'est configuré, les installateurs sont publiés non signés. Pou
 - secret `SIGNPATH_API_TOKEN` ;
 - variables `SIGNPATH_ORGANIZATION_ID`, `SIGNPATH_PROJECT_SLUG`, `SIGNPATH_SIGNING_POLICY_SLUG`, `SIGNPATH_ARTIFACT_CONFIGURATION_SLUG`.
 
-Le workflow envoie alors les deux exe à SignPath (artefact `lanceur-unsigned`), attend la signature, remplace les fichiers du dossier `release` par les versions signées et publie celles-ci. La configuration d'artefact SignPath doit signer `Lanceur-Setup.exe` et `Lanceur-Update.exe`.
+Le workflow envoie alors les deux exe à SignPath (artefact `lanceur-unsigned`), attend la signature, remplace les fichiers du dossier `release` par les versions signées et publie celles-ci. La configuration d'artefact SignPath doit signer `Lucania-Luncheur-Setup.exe` et `Lucania-Luncheur-Update.exe`.
 
 ## Stack
 
@@ -141,13 +141,13 @@ Astro 7 · JavaScript vanilla · Tailwind CSS v4 · daisyUI 5 · Tauri v2 · Rus
 - `src/i18n` : textes FR et EN. `src/styles` : styles et thèmes.
 - `public/app-icons` : icônes des applications du catalogue.
 - `apps.json` : catalogue des applications.
-- `src-tauri` : application Tauri (registre, détection, téléchargement, processus, mise à jour du Lanceur, installateur NSIS dans `src-tauri/windows`).
+- `src-tauri` : application Tauri (registre, détection, téléchargement, processus, mise à jour de Lucania Luncheur, installateur NSIS dans `src-tauri/windows`).
 - `scripts` : installateurs à nom fixe, updater, gestion de la version.
 - `.github/workflows/build.yml` : build et release.
 
 ## Confidentialité
 
-Le Lanceur ne contacte que GitHub : pour lire la liste des applications (`raw.githubusercontent.com`), vérifier les dernières versions et télécharger les installateurs. Il n'envoie aucune donnée personnelle.
+Lucania Luncheur ne contacte que GitHub : pour lire la liste des applications (`raw.githubusercontent.com`), vérifier les dernières versions et télécharger les installateurs. Il n'envoie aucune donnée personnelle.
 
 ## Licence
 
@@ -159,15 +159,15 @@ Le Lanceur ne contacte que GitHub : pour lire la liste des applications (`raw.gi
 
 ## Overview
 
-Lanceur is a Windows app (Tauri v2, Astro interface) that lists applications published on GitHub Releases. For each application, it shows whether it is installed and what the latest version is. It can install, update, launch or uninstall it.
+Lucania Luncheur is a Windows app (Tauri v2, Astro interface) that lists applications published on GitHub Releases. For each application, it shows whether it is installed and what the latest version is. It can install, update, launch or uninstall it.
 
-The wolf is the emblem of Lanceur.
+The wolf is the emblem of Lucania Luncheur.
 
-Lanceur installs for your Windows account, with an NSIS installer, without administrator rights. It updates itself with `Lanceur-Update.exe`.
+Lucania Luncheur installs for your Windows account, with an NSIS installer, without administrator rights. It updates itself with `Lucania-Luncheur-Update.exe`.
 
 ## Available apps
 
-The simplest way is to install Lanceur: it installs and updates all the apps below. Each app can also be downloaded on its own, with its direct link.
+The simplest way is to install Lucania Luncheur: it installs and updates all the apps below. Each app can also be downloaded on its own, with its direct link.
 
 | | App | Description | Download |
 | --- | --- | --- | --- |
@@ -184,18 +184,18 @@ The simplest way is to install Lanceur: it installs and updates all the apps bel
 - ▶️ Launch an installed app ("Already running" if it is running)
 - 🗑️ Uninstall, with or without deleting the app's data
 - 🔎 Filters (all, installed, updates, not installed) and a search field
-- 🔁 Lanceur update from within the app, after confirmation
+- 🔁 Lucania Luncheur update from within the app, after confirmation
 - 🛡️ Per-user install, no administrator rights
-- 🆕 Add an app without a new Lanceur release (see "Add an app")
+- 🆕 Add an app without a new Lucania Luncheur release (see "Add an app")
 - 🎨 13 themes (including "System")
 - 🌍 French and English interface
 - 📶 Warning when offline or when the GitHub rate limit is reached
 
 ## Installation
 
-1. Download [`Lanceur-Setup.exe`](https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lanceur-Setup.exe) (direct link, latest release).
-2. Run the installer. Lanceur installs for your Windows account. No administrator permission is asked.
-3. Open Lanceur, then install the apps you want.
+1. Download [`Lucania-Luncheur-Setup.exe`](https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lucania-Luncheur-Setup.exe) (direct link, latest release).
+2. Run the installer. Lucania Luncheur installs for your Windows account. No administrator permission is asked.
+3. Open Lucania Luncheur, then install the apps you want.
 
 Requirements: Windows 10 or 11 (64-bit), with WebView2 (included in Windows 11).
 
@@ -205,11 +205,11 @@ The file name never changes: a single exception in your antivirus is enough for 
 
 ## Update
 
-From the app: Lanceur checks the latest GitHub release and offers the update. After confirmation, it downloads the new version, closes and restarts.
+From the app: Lucania Luncheur checks the latest GitHub release and offers the update. After confirmation, it downloads the new version, closes and restarts.
 
-By hand: download [`Lanceur-Update.exe`](https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lanceur-Update.exe) (direct link, latest release) and run it.
+By hand: download [`Lucania-Luncheur-Update.exe`](https://github.com/Pierre-ML/lucania_luncheur/releases/latest/download/Lucania-Luncheur-Update.exe) (direct link, latest release) and run it.
 
-Lanceur data: `%LOCALAPPDATA%\com.lanceur.desktop` (config.json, WebView2 cache) and `%APPDATA%\com.lanceur.desktop`. They are only deleted by a real uninstall.
+Lucania Luncheur data: `%LOCALAPPDATA%\com.lanceur.desktop` (config.json, WebView2 cache) and `%APPDATA%\com.lanceur.desktop`. They are only deleted by a real uninstall.
 
 ## Add an app
 
@@ -234,12 +234,12 @@ Edit only `apps.json` at the root. One object per app:
 | `updateArgs` (optional) | arguments passed to the update exe |
 | `maxSizeMb` (optional) | maximum accepted download size |
 
-The code (`src-tauri/src/registry.rs`) also reads `https://raw.githubusercontent.com/Pierre-ML/Lanceur/main/apps.json` (`main` branch). If that file is valid, it overrides the `apps.json` embedded in the app: adding an app then needs no new Lanceur release. Only repositories owned by the same owners as those already accepted are taken into account; other entries are ignored. Otherwise, or on failure, the app keeps the last valid registry, or the embedded one.
+The code (`src-tauri/src/registry.rs`) also reads `https://raw.githubusercontent.com/Pierre-ML/lucania_luncheur/main/apps.json` (`main` branch). If that file is valid, it overrides the `apps.json` embedded in the app: adding an app then needs no new Lucania Luncheur release. Only repositories owned by the same owners as those already accepted are taken into account; other entries are ignored. Otherwise, or on failure, the app keeps the last valid registry, or the embedded one.
 
 ### What each app must publish
 
 - FIXED-NAME files (no version number) in the repository's GitHub Releases, matching `setup` and `updater` (for example `MyApp-Setup.exe` and `MyApp-Update.exe`), so that `releases/latest/download/<file>` links stay valid.
-- An NSIS installer in currentUser mode (install into `%LOCALAPPDATA%\Programs\<productName>`, uninstall key in `HKCU`), with `DisplayVersion` set: Lanceur uses it to find the installed state and version.
+- An NSIS installer in currentUser mode (install into `%LOCALAPPDATA%\Programs\<productName>`, uninstall key in `HKCU`), with `DisplayVersion` set: Lucania Luncheur uses it to find the installed state and version.
 - A `vX.Y.Z` tag per release.
 
 ## Development
@@ -254,13 +254,13 @@ Requirements: Node.js 22, Rust (stable toolchain), WebView2 (included in Windows
 | `npm run desktop:build` | `tauri build` + fixed-name installers |
 | `npm run version:set X.Y.Z` | Change the version in the 4 files that carry it |
 
-`npm run desktop:build` produces, in `src-tauri/target/release/bundle/release/`: `Lanceur-Setup.exe` (first install) and `Lanceur-Update.exe` (update).
+`npm run desktop:build` produces, in `src-tauri/target/release/bundle/release/`: `Lucania-Luncheur-Setup.exe` (first install) and `Lucania-Luncheur-Update.exe` (update).
 
 Version: the source is `src-tauri/tauri.conf.json`; `package.json`, `package-lock.json` and `src-tauri/Cargo.toml` must carry the same one (the workflow checks it, `version:set` updates them together).
 
 ## Release
 
-The `.github/workflows/build.yml` workflow runs on every push to `main`: it checks that versions match, builds on Windows, checks that both installers exist, then publishes a `Lanceur vX.Y.Z` release (tag `vX.Y.Z`) with `Lanceur-Setup.exe` and `Lanceur-Update.exe`, unless that tag already exists. To ship a version: `npm run version:set X.Y.Z`, commit, push.
+The `.github/workflows/build.yml` workflow runs on every push to `main`: it checks that versions match, builds on Windows, checks that both installers exist, then publishes a `Lucania Luncheur vX.Y.Z` release (tag `vX.Y.Z`) with `Lucania-Luncheur-Setup.exe` and `Lucania-Luncheur-Update.exe`, unless that tag already exists. To ship a version: `npm run version:set X.Y.Z`, commit, push.
 
 ### SignPath signing (optional)
 
@@ -269,7 +269,7 @@ As long as nothing is configured, installers are published unsigned. To enable s
 - secret `SIGNPATH_API_TOKEN`;
 - variables `SIGNPATH_ORGANIZATION_ID`, `SIGNPATH_PROJECT_SLUG`, `SIGNPATH_SIGNING_POLICY_SLUG`, `SIGNPATH_ARTIFACT_CONFIGURATION_SLUG`.
 
-The workflow then sends both exe files to SignPath (artifact `lanceur-unsigned`), waits for the signature, replaces the files in the `release` folder with the signed versions and publishes those. The SignPath artifact configuration must sign `Lanceur-Setup.exe` and `Lanceur-Update.exe`.
+The workflow then sends both exe files to SignPath (artifact `lanceur-unsigned`), waits for the signature, replaces the files in the `release` folder with the signed versions and publishes those. The SignPath artifact configuration must sign `Lucania-Luncheur-Setup.exe` and `Lucania-Luncheur-Update.exe`.
 
 ## Stack
 
@@ -282,13 +282,13 @@ Astro 7 · vanilla JavaScript · Tailwind CSS v4 · daisyUI 5 · Tauri v2 · Rus
 - `src/i18n`: FR and EN texts. `src/styles`: styles and themes.
 - `public/app-icons`: icons of the catalog apps.
 - `apps.json`: app catalog.
-- `src-tauri`: Tauri app (registry, detection, download, processes, Lanceur self-update, NSIS installer in `src-tauri/windows`).
+- `src-tauri`: Tauri app (registry, detection, download, processes, Lucania Luncheur self-update, NSIS installer in `src-tauri/windows`).
 - `scripts`: fixed-name installers, updater, version management.
 - `.github/workflows/build.yml`: build and release.
 
 ## Privacy
 
-Lanceur only contacts GitHub: to read the app list (`raw.githubusercontent.com`), check the latest versions and download installers. It sends no personal data.
+Lucania Luncheur only contacts GitHub: to read the app list (`raw.githubusercontent.com`), check the latest versions and download installers. It sends no personal data.
 
 ## License
 
