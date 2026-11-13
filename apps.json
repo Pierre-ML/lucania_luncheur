@@ -18,8 +18,37 @@
       "exe": "lucania.exe",
       "waitPidArg": "/LUCANIA_WAITPID=",
       "keepDataArg": "/UPDATE",
-      "installArgs": ["/S"],
-      "updateArgs": ["/S"],
+      "installArgs": [
+        "/S"
+      ],
+      "updateArgs": [
+        "/S"
+      ],
+      "maxSizeMb": 500
+    },
+    {
+      "id": "lucascrap",
+      "enabled": true,
+      "name": "Lucascrap",
+      "description": {
+        "fr": "Téléchargeur d'images et de vidéos (Google Images, X, Reddit) avec conversion ffmpeg.",
+        "en": "Image and video downloader (Google Images, X, Reddit) with ffmpeg conversion."
+      },
+      "icon": "lucascrap.svg",
+      "repo": "Pierre-ML/lucascrap",
+      "setup": "Lucascrap-Setup.exe",
+      "updater": "Lucascrap-Update.exe",
+      "identifier": "com.mediadownloader.app",
+      "productName": "Lucascrap",
+      "exe": "lucascrap.exe",
+      "waitPidArg": "/MDL_WAITPID=",
+      "keepDataArg": "/UPDATE",
+      "installArgs": [
+        "/S"
+      ],
+      "updateArgs": [
+        "/S"
+      ],
       "maxSizeMb": 500
     },
     {
@@ -39,8 +68,12 @@
       "exe": "app2.exe",
       "waitPidArg": "/APP2_WAITPID=",
       "keepDataArg": "/UPDATE",
-      "installArgs": ["/S"],
-      "updateArgs": ["/S"],
+      "installArgs": [
+        "/S"
+      ],
+      "updateArgs": [
+        "/S"
+      ],
       "maxSizeMb": 500
     },
     {
@@ -60,8 +93,12 @@
       "exe": "app3.exe",
       "waitPidArg": "/APP3_WAITPID=",
       "keepDataArg": "/UPDATE",
-      "installArgs": ["/S"],
-      "updateArgs": ["/S"],
+      "installArgs": [
+        "/S"
+      ],
+      "updateArgs": [
+        "/S"
+      ],
       "maxSizeMb": 500
     },
     {
@@ -81,8 +118,12 @@
       "exe": "app4.exe",
       "waitPidArg": "/APP4_WAITPID=",
       "keepDataArg": "/UPDATE",
-      "installArgs": ["/S"],
-      "updateArgs": ["/S"],
+      "installArgs": [
+        "/S"
+      ],
+      "updateArgs": [
+        "/S"
+      ],
       "maxSizeMb": 500
     }
   ]
