@@ -33,7 +33,7 @@ Le plus simple est d'installer Lucania Luncheur : il installe et met à jour tou
 | <img src="public/app-icons/lucania.svg" width="40" /> | [Lucania](https://github.com/Pierre-ML/Lucania) | Interface de chat locale pour modèles GGUF, moteur llama.cpp intégré. | [Lucania-Setup.exe](https://github.com/Pierre-ML/Lucania/releases/latest/download/Lucania-Setup.exe) |
 | <img src="public/app-icons/lucascrap.svg" width="40" /> | [Lucascrap](https://github.com/Pierre-ML/lucascrap) | Téléchargeur d'images et de vidéos (Google Images, X, Reddit) avec conversion ffmpeg. | [Lucascrap-Setup.exe](https://github.com/Pierre-ML/lucascrap/releases/latest/download/Lucascrap-Setup.exe) |
 | <img src="public/app-icons/lucamedia.svg" width="40" /> | [Lucamedia](https://github.com/Pierre-ML/lucamedia) | Téléchargeur de vidéos HLS/m3u8 avec vérification d'intégrité. | [Lucamedia-Setup.exe](https://github.com/Pierre-ML/lucamedia/releases/latest/download/Lucamedia-Setup.exe) |
-| <img src="public/app-icons/ecoaudit.svg" width="40" /> | [EcoAudit](https://github.com/Pierre-ML/luca-audit) | Audit local de performance, d'accessibilité et d'éco-conception. | [EcoAudit-Setup.exe](https://github.com/Pierre-ML/luca-audit/releases/latest/download/EcoAudit-Setup.exe) |
+| <img src="public/app-icons/lucaaudit.svg" width="40" /> | [Luca-Audit](https://github.com/Pierre-ML/luca-audit) | Audit local de performance, d'accessibilité et d'éco-conception. | [Luca-Audit-Setup.exe](https://github.com/Pierre-ML/luca-audit/releases/latest/download/Luca-Audit-Setup.exe) |
 
 ## Fonctionnalités
 
@@ -174,7 +174,7 @@ The simplest way is to install Lucania Luncheur: it installs and updates all the
 | <img src="public/app-icons/lucania.svg" width="40" /> | [Lucania](https://github.com/Pierre-ML/Lucania) | Local chat interface for GGUF models, with a built-in llama.cpp engine. | [Lucania-Setup.exe](https://github.com/Pierre-ML/Lucania/releases/latest/download/Lucania-Setup.exe) |
 | <img src="public/app-icons/lucascrap.svg" width="40" /> | [Lucascrap](https://github.com/Pierre-ML/lucascrap) | Image and video downloader (Google Images, X, Reddit) with ffmpeg conversion. | [Lucascrap-Setup.exe](https://github.com/Pierre-ML/lucascrap/releases/latest/download/Lucascrap-Setup.exe) |
 | <img src="public/app-icons/lucamedia.svg" width="40" /> | [Lucamedia](https://github.com/Pierre-ML/lucamedia) | HLS/m3u8 video downloader with integrity checking. | [Lucamedia-Setup.exe](https://github.com/Pierre-ML/lucamedia/releases/latest/download/Lucamedia-Setup.exe) |
-| <img src="public/app-icons/ecoaudit.svg" width="40" /> | [EcoAudit](https://github.com/Pierre-ML/luca-audit) | Local audit of performance, accessibility and eco-design. | [EcoAudit-Setup.exe](https://github.com/Pierre-ML/luca-audit/releases/latest/download/EcoAudit-Setup.exe) |
+| <img src="public/app-icons/lucaaudit.svg" width="40" /> | [Luca-Audit](https://github.com/Pierre-ML/luca-audit) | Local audit of performance, accessibility and eco-design. | [Luca-Audit-Setup.exe](https://github.com/Pierre-ML/luca-audit/releases/latest/download/Luca-Audit-Setup.exe) |
 
 ## Features
 
