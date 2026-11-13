@@ -65,6 +65,27 @@
       "maxSizeMb": 500
     },
     {
+      "id": "ecoaudit",
+      "enabled": true,
+      "name": "EcoAudit",
+      "description": {
+        "fr": "Audit local de performance, d'accessibilité et d'éco-conception.",
+        "en": "Local audit of performance, accessibility and eco-design."
+      },
+      "icon": "ecoaudit.svg",
+      "repo": "Pierre-ML/luca-audit",
+      "setup": "EcoAudit-Setup.exe",
+      "updater": "EcoAudit-Update.exe",
+      "identifier": "com.ecoaudit.desktop",
+      "productName": "EcoAudit",
+      "exe": "eco-audit.exe",
+      "waitPidArg": "/ECOAUDIT_WAITPID=",
+      "keepDataArg": "/UPDATE",
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
+      "maxSizeMb": 500
+    },
+    {
       "id": "app2",
       "enabled": false,
       "name": "APP2",
