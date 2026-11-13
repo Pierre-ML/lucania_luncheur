@@ -2,52 +2,52 @@
 import { t } from '../lib/client/i18n.js';
 const version = import.meta.env.LANCEUR_VERSION;
 ---
-<header class="border-b border-border bg-surface/60">
-	<div class="navbar mx-auto max-w-6xl flex-wrap gap-2 px-4 sm:px-6">
-		<div class="flex flex-1 items-center gap-3">
-			<img src="/favicon.svg" alt="" width="32" height="32" class="size-8 shrink-0" />
-			<h1 class="text-lg font-semibold tracking-tight">Lanceur</h1>
-			<span class="text-xs text-muted">v{version}</span>
-		</div>
+<!-- Barre du haut : logo, nom, version à gauche ; actions séparées par des filets à droite -->
+<header class="flex shrink-0 items-stretch border-b border-border bg-bg">
+	<div class="flex min-w-0 flex-1 items-center gap-3 px-4 sm:px-6">
+		<img src="/favicon.svg" alt="" width="28" height="28" class="size-7 shrink-0" />
+		<h1 class="mono-label text-sm font-bold tracking-[0.28em]">Lanceur</h1>
+		<span class="mono-label text-muted">v{version}</span>
+	</div>
 
-		<div class="flex flex-none flex-wrap items-center gap-2">
-			<button type="button" data-refresh class="btn btn-sm">
-				<svg data-refresh-icon aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
+	<div class="flex shrink-0 items-stretch">
+		<div class="flex items-center border-l border-border px-2">
+			<button type="button" data-refresh data-i18n-label="common.header.refresh" data-i18n-title="common.header.refresh" aria-label={t('common.header.refresh')} title={t('common.header.refresh')} class="btn btn-ghost btn-square size-10 min-h-10">
+				<svg data-refresh-icon aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5">
 					<path d="M21 12a9 9 0 1 1-3-6.7L21 8" />
 					<path d="M21 3v5h-5" />
 				</svg>
 				<span data-refresh-spinner hidden class="loading loading-spinner loading-xs" aria-hidden="true"></span>
-				<span data-i18n="common.header.refresh">{t('common.header.refresh')}</span>
 			</button>
+		</div>
 
-			<button type="button" data-update-all hidden class="btn btn-sm border-0 bg-fg text-bg hover:opacity-90">
-				<span data-i18n="common.header.updateAll">{t('common.header.updateAll')}</span>
-			</button>
+		<div class="flex items-center border-l border-border px-2">
+			<select data-theme-select data-i18n-label="common.header.theme" aria-label={t('common.header.theme')} class="select select-ghost mono-label h-10 min-h-10 w-auto"></select>
+		</div>
 
-			<select data-theme-select data-i18n-label="common.header.theme" aria-label={t('common.header.theme')} class="select select-sm w-auto"></select>
-
-			<div class="join" role="group" data-i18n-label="common.header.language" aria-label={t('common.header.language')}>
-				<button type="button" data-lang-btn data-lang="fr" lang="fr" aria-pressed="true" class="btn btn-sm join-item aria-pressed:border-fg aria-pressed:bg-fg aria-pressed:text-bg">FR</button>
-				<button type="button" data-lang-btn data-lang="en" lang="en" aria-pressed="false" class="btn btn-sm join-item aria-pressed:border-fg aria-pressed:bg-fg aria-pressed:text-bg">EN</button>
+		<div class="flex items-center border-l border-border px-2">
+			<div class="flex items-center gap-1" role="group" data-i18n-label="common.header.language" aria-label={t('common.header.language')}>
+				<button type="button" data-lang-btn data-lang="fr" lang="fr" aria-pressed="true" class="mono-label inline-flex h-8 min-w-9 cursor-pointer items-center justify-center px-2 text-muted hover:text-fg aria-pressed:bg-fg aria-pressed:text-bg">FR</button>
+				<button type="button" data-lang-btn data-lang="en" lang="en" aria-pressed="false" class="mono-label inline-flex h-8 min-w-9 cursor-pointer items-center justify-center px-2 text-muted hover:text-fg aria-pressed:bg-fg aria-pressed:text-bg">EN</button>
 			</div>
+		</div>
 
-			<!-- Mise à jour du Lanceur : visible dans l'application de bureau seulement -->
-			<div data-self-wrap hidden class="relative shrink-0">
-				<div class="indicator">
-					<span data-self-dot hidden class="status status-warning indicator-item"></span>
-					<button type="button" data-self-btn data-i18n-label="common.selfUpdate.title" aria-label={t('common.selfUpdate.title')} class="btn btn-sm btn-square">
-						<svg data-self-icon aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
-							<path d="M12 15V3" />
-							<path d="m7 10 5 5 5-5" />
-							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-						</svg>
-						<span data-self-spinner hidden class="loading loading-spinner loading-xs" aria-hidden="true"></span>
-					</button>
-				</div>
-				<div data-self-progress hidden class="absolute right-0 top-full z-30 mt-2 w-64 rounded-box border border-border bg-surface p-3 text-xs shadow-lg">
-					<p data-self-progress-text role="status" aria-live="polite"></p>
-					<progress data-self-progress-bar value="0" max="1" data-i18n-label="common.selfUpdate.progressLabel" aria-label={t('common.selfUpdate.progressLabel')} class="progress mt-2 w-full"></progress>
-				</div>
+		<!-- Mise à jour du Lanceur : visible dans l'application de bureau seulement -->
+		<div data-self-wrap hidden class="relative flex items-center border-l border-border px-2">
+			<div class="indicator">
+				<span data-self-dot hidden class="status status-warning indicator-item"></span>
+				<button type="button" data-self-btn data-i18n-label="common.selfUpdate.title" aria-label={t('common.selfUpdate.title')} class="btn btn-ghost btn-square size-10 min-h-10">
+					<svg data-self-icon aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5">
+						<path d="M12 15V3" />
+						<path d="m7 10 5 5 5-5" />
+						<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+					</svg>
+					<span data-self-spinner hidden class="loading loading-spinner loading-xs" aria-hidden="true"></span>
+				</button>
+			</div>
+			<div data-self-progress hidden class="absolute right-0 top-full z-30 w-64 border border-border bg-surface p-3 text-xs shadow-lg">
+				<p data-self-progress-text role="status" aria-live="polite"></p>
+				<progress data-self-progress-bar value="0" max="1" data-i18n-label="common.selfUpdate.progressLabel" aria-label={t('common.selfUpdate.progressLabel')} class="progress mt-2 h-1 w-full"></progress>
 			</div>
 		</div>
 	</div>

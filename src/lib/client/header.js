@@ -1,6 +1,6 @@
-// En-tête : boutons « Actualiser » et « Tout mettre à jour ».
+// En-tête : bouton « Actualiser » ; bouton « Tout mettre à jour » (visibilité et compteur : toolbar.js).
 import { refresh, updateAll } from './actions.js';
-import { getApps } from './apps.js';
+import { isDemo } from './demo.js';
 import { inTauri } from './tauri.js';
 
 export function initHeader() {
@@ -10,16 +10,11 @@ export function initHeader() {
   const allBtn = /** @type {HTMLButtonElement|null} */ (document.querySelector('[data-update-all]'));
   if (!refreshBtn || !spinner || !icon || !allBtn) return;
 
-  if (!inTauri()) {
+  // Hors application de bureau (et hors mode démo) : rien à actualiser
+  if (!inTauri() && !isDemo()) {
     refreshBtn.disabled = true;
     return;
   }
-
-  // Le bouton « Tout mettre à jour » n'apparaît que s'il y a au moins une mise à jour
-  const syncAll = () => {
-    allBtn.hidden = !getApps().some((a) => a.installed && a.updateAvailable);
-  };
-  document.addEventListener('lanceur:apps', syncAll);
 
   refreshBtn.addEventListener('click', async () => {
     refreshBtn.disabled = true;

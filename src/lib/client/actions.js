@@ -2,9 +2,16 @@
 import { call } from './tauri.js';
 import { currentOp, findApp, getApps, setApps, setLocalOp } from './apps.js';
 import { confirmDialog } from './dialog.js';
+import { isDemo } from './demo.js';
 import { errorCode, errorMessage } from './errors.js';
 import { t } from './i18n.js';
 import { toast } from './toast.js';
+
+/** Mode démo : aucune action réelle, un simple message. */
+function demoNotice() {
+  toast('info', t('common.demo.noAction'));
+  return Promise.resolve();
+}
 
 /** @type {Promise<void>|null} */
 let refreshing = null;
@@ -30,6 +37,7 @@ export async function pollList(notify = false) {
  * @param {{ force?: boolean, notify?: boolean }} [opts] notify : afficher avertissement et erreur
  */
 export function refresh({ force = false, notify = true } = {}) {
+  if (isDemo()) return demoNotice();
   refreshing ??= (async () => {
     try {
       /** @type {{ apps: import('./apps.js').AppView[], warning: string|null }} */
@@ -79,6 +87,7 @@ const names = (list) => list.map((a) => a.name).join(', ');
 
 /** Met à jour toutes les applications qui en ont besoin, une par une. */
 export async function updateAll() {
+  if (isDemo()) return demoNotice();
   if (updatingAll) return;
   const targets = getApps().filter((a) => a.installed && a.updateAvailable && !currentOp(a));
   if (targets.length === 0) return;
@@ -110,6 +119,7 @@ export async function updateAll() {
 
 /** Actions des boutons d'une carte. @param {string} action @param {string} id */
 export async function handleAction(action, id) {
+  if (isDemo()) return demoNotice();
   const app = findApp(id);
   if (!app) return;
 

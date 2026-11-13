@@ -1,0 +1,27 @@
+---
+import { t } from '../lib/client/i18n.js';
+
+// Onglets de filtre (l'ordre et les clés sont repris par toolbar.js)
+const tabs = ['all', 'installed', 'updates', 'notInstalled'] as const;
+---
+<!-- Barre d'outils : filtres avec compteurs, recherche, « Tout mettre à jour » -->
+<div class="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-3 px-4 py-4 sm:px-6">
+	<div role="group" data-i18n-label="common.toolbar.filters" aria-label={t('common.toolbar.filters')} class="flex flex-wrap">
+		{tabs.map((key) => (
+			<button type="button" data-filter={key} aria-pressed="false" class="mono-label relative -ml-px inline-flex h-10 cursor-pointer items-center gap-2 border border-border px-3 text-muted first:ml-0 hover:text-fg aria-pressed:border-fg aria-pressed:z-10 aria-pressed:bg-fg aria-pressed:text-bg">
+				<span data-i18n={`common.toolbar.filter.${key}`}>{t(`common.toolbar.filter.${key}`)}</span>
+				<span data-count={key} data-warn="false" class="tab-count">0</span>
+			</button>
+		))}
+	</div>
+
+	<div class="ml-auto flex flex-wrap items-center gap-3">
+		<label class="sr-only" for="app-search" data-i18n="common.toolbar.searchLabel">{t('common.toolbar.searchLabel')}</label>
+		<input id="app-search" data-search type="search" autocomplete="off" spellcheck="false" placeholder={t('common.toolbar.search')} data-i18n-placeholder="common.toolbar.search" class="input h-10 w-56 max-w-full" />
+
+		<button type="button" data-update-all hidden class="btn mono-label h-10 min-h-10 border-fg bg-fg px-4 font-bold text-bg hover:opacity-90">
+			<span data-i18n="common.header.updateAll">{t('common.header.updateAll')}</span>
+			<span data-update-count></span>
+		</button>
+	</div>
+</div>

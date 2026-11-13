@@ -1,11 +1,14 @@
 // Point d'entrée : langue et thème, cycle de vie de la liste d'applications.
 import { handleAction, pollList, refresh } from './actions.js';
-import { initGrid, markLoaded, render, setApps, setProgress } from './apps.js';
+import { getApps, initGrid, markLoaded, render, setApps, setProgress } from './apps.js';
+import { demoApps, demoProgress, isDemo } from './demo.js';
 import { initHeader } from './header.js';
 import { applyI18n, initLang } from './i18n.js';
+import { initMenus } from './menu.js';
 import { initPrefs, loadPrefs } from './prefs.js';
 import { call, inTauri, onEvent } from './tauri.js';
 import { initTheme } from './theme.js';
+import { initToolbar } from './toolbar.js';
 import { initSelfUpdate } from './update.js';
 import { errorMessage } from './errors.js';
 import { toast } from './toast.js';
@@ -21,11 +24,20 @@ async function start() {
   initPrefs();
   initGrid(handleAction);
   initHeader();
+  initToolbar();
+  initMenus();
   render();
 
-  // Hors Tauri (navigateur) : état vide et message discret, aucun appel au backend
+  // Hors Tauri (navigateur) : état vide et message discret, aucun appel au backend.
+  // Développement seulement, avec ?demo : liste factice pour voir le design.
   if (!inTauri()) {
-    markLoaded();
+    if (isDemo()) {
+      setApps(await demoApps());
+      const busy = getApps().find((a) => a.busy);
+      if (busy) setProgress(busy.id, { id: busy.id, ...demoProgress() });
+    } else {
+      markLoaded();
+    }
     return;
   }
 

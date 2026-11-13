@@ -55,7 +55,7 @@ export function t(key, params) {
 /** Vrai si la clé existe dans la langue courante ou en français. */
 export const hasKey = (/** @type {string} */ key) => lookup(lang, key) !== undefined || lookup(DEFAULT_LANG, key) !== undefined;
 
-/** Remplit les éléments marqués data-i18n (texte), data-i18n-title et data-i18n-label (aria-label). */
+/** Remplit les éléments marqués data-i18n (texte), data-i18n-title, data-i18n-label (aria-label) et data-i18n-placeholder. */
 export function applyI18n(/** @type {ParentNode} */ root = document) {
   for (const el of root.querySelectorAll('[data-i18n]')) el.textContent = t(/** @type {HTMLElement} */ (el).dataset.i18n ?? '');
   for (const el of root.querySelectorAll('[data-i18n-title]')) {
@@ -63,6 +63,9 @@ export function applyI18n(/** @type {ParentNode} */ root = document) {
   }
   for (const el of root.querySelectorAll('[data-i18n-label]')) {
     el.setAttribute('aria-label', t(/** @type {HTMLElement} */ (el).dataset.i18nLabel ?? ''));
+  }
+  for (const el of root.querySelectorAll('[data-i18n-placeholder]')) {
+    el.setAttribute('placeholder', t(/** @type {HTMLElement} */ (el).dataset.i18nPlaceholder ?? ''));
   }
 }
 

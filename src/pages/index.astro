@@ -1,30 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Toolbar from '../components/Toolbar.astro';
+import Footer from '../components/Footer.astro';
 import AppCard from '../components/AppCard.astro';
 import ConfirmDialog from '../components/ConfirmDialog.astro';
 import Toasts from '../components/Toasts.astro';
 import { t } from '../lib/client/i18n.js';
+
+// Grille à bordures partagées : filet haut et gauche ici, filet bas et droit sur chaque tuile
+const gridClass = 'grid grid-cols-1 border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3';
 ---
 <Layout>
 	<Header />
-	<main class="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6">
-		<!-- Squelettes affichés jusqu'au premier chargement de la liste -->
-		<div data-skeleton aria-busy="true" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	<Toolbar />
+	<main class="scroll-area min-h-0 flex-1 overflow-y-auto px-4 pb-6 sm:px-6">
+		<!-- Squelettes affichés jusqu'au premier chargement de la liste (même gabarit que les tuiles) -->
+		<div data-skeleton aria-busy="true" class={gridClass}>
 			<span class="sr-only">{t('common.loading')}</span>
 			{[0, 1, 2].map(() => (
-				<div aria-hidden="true" class="card card-border bg-surface">
-					<div class="card-body gap-3 p-5">
-						<div class="flex items-start gap-3">
-							<div class="skeleton size-12 shrink-0 rounded-xl"></div>
-							<div class="flex-1 space-y-2">
-								<div class="skeleton h-4 w-1/2"></div>
-								<div class="skeleton h-3 w-1/3"></div>
+				<div aria-hidden="true" class="flex flex-col border-b border-r border-border">
+					<div class="flex items-center border-b border-border px-5 py-3">
+						<div class="skeleton size-7"></div>
+					</div>
+					<div class="flex flex-col gap-4 p-5">
+						<div class="flex items-start gap-4">
+							<div class="skeleton size-14 shrink-0 rounded-xl"></div>
+							<div class="flex-1 space-y-2 pt-1">
+								<div class="skeleton h-5 w-1/2"></div>
+								<div class="skeleton h-3 w-3/4"></div>
 							</div>
 						</div>
-						<div class="skeleton h-3 w-full"></div>
-						<div class="skeleton h-3 w-3/4"></div>
-						<div class="skeleton mt-2 h-8 w-28"></div>
+						<div class="skeleton h-6 w-40"></div>
+						<div class="skeleton h-3 w-2/3"></div>
+						<div class="flex gap-2">
+							<div class="skeleton h-10 flex-1"></div>
+							<div class="skeleton size-10"></div>
+						</div>
 					</div>
 				</div>
 			))}
@@ -32,8 +44,17 @@ import { t } from '../lib/client/i18n.js';
 
 		<p data-empty hidden role="status" class="py-16 text-center text-sm text-muted"></p>
 
-		<div data-grid class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+		<!-- Aucun résultat pour le filtre ou la recherche -->
+		<div data-noresults hidden role="status" class="flex flex-col items-center gap-4 border border-border py-16 text-center">
+			<p class="text-sm text-muted" data-i18n="common.toolbar.noResults">{t('common.toolbar.noResults')}</p>
+			<button type="button" data-reset-filters class="btn mono-label h-10 min-h-10 border-fg bg-transparent px-4 text-fg hover:bg-fg/10">
+				<span data-i18n="common.toolbar.reset">{t('common.toolbar.reset')}</span>
+			</button>
+		</div>
+
+		<div data-grid class={gridClass}></div>
 	</main>
+	<Footer />
 
 	<AppCard />
 	<ConfirmDialog />

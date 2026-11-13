@@ -28,9 +28,9 @@
   --color-warning-content: #0b0b0c;
   --color-error: #ff4d4f;
   --color-error-content: #0b0b0c;
-  --radius-selector: 0.5rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1rem;
+  --radius-selector: 0.125rem;
+  --radius-field: 0.125rem;
+  --radius-box: 0.25rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -98,4 +98,86 @@
     color: var(--color-fg);
   }
   select option:disabled { color: var(--color-muted); }
+}
+
+/* Coins quasi droits dans tous les thèmes (hors couche : prime sur les rayons des thèmes daisyUI) */
+[data-theme],
+:root {
+  --radius-selector: 0.125rem;
+  --radius-field: 0.125rem;
+  --radius-box: 0.25rem;
+}
+
+/* Fenêtre de bureau : le défilement est dans la grille, pas dans la page */
+@layer base {
+  html,
+  body { height: 100%; overflow: hidden; }
+  .scroll-area { scrollbar-gutter: stable; }
+}
+
+@layer components {
+  /* Étiquette : mono, capitales, espacée */
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Couleur d'accent des pastilles numérotées : fixe, attribuée selon la position de l'app (data-tone 0..7) */
+  [data-tone="0"] { --chip: #60a5fa; }
+  [data-tone="1"] { --chip: #f87171; }
+  [data-tone="2"] { --chip: #a78bfa; }
+  [data-tone="3"] { --chip: #fbbf24; }
+  [data-tone="4"] { --chip: #2dd4bf; }
+  [data-tone="5"] { --chip: #f472b6; }
+  [data-tone="6"] { --chip: #a3e635; }
+  [data-tone="7"] { --chip: #fb923c; }
+  .num-chip {
+    display: grid;
+    place-items: center;
+    min-width: 1.75rem;
+    height: 1.75rem;
+    padding-inline: 0.25rem;
+    background: var(--chip, var(--color-base-content));
+    color: #0b0b0c;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  /* Badge d'état : bordure fine colorée, fond transparent, texte teinté mais lisible sur thèmes clairs */
+  .state-badge {
+    --tone: var(--color-base-content);
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--tone);
+    padding: 0.25rem 0.5rem;
+    color: color-mix(in oklab, var(--tone) 65%, var(--color-base-content));
+    background: transparent;
+  }
+  .state-badge[data-state="update"] { --tone: var(--color-warning); }
+  .state-badge[data-state="none"],
+  .state-badge[data-state="running"] { --tone: var(--color-info); }
+  .state-badge[data-state="ok"] { --tone: var(--color-success); }
+
+  .tab-count { opacity: 0.7; }
+  [aria-pressed="true"] > .tab-count { opacity: 1; }
+  .tab-count[data-warn="true"] { opacity: 1; color: color-mix(in oklab, var(--color-warning) 65%, var(--color-base-content)); }
+  [aria-pressed="true"] > .tab-count[data-warn="true"] { color: inherit; font-weight: 700; }
+  .tone-warning { color: color-mix(in oklab, var(--color-warning) 65%, var(--color-base-content)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

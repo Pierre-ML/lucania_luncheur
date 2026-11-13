@@ -1,42 +1,70 @@
 ---
 import { t } from '../lib/client/i18n.js';
 ---
-<!-- Modèle de carte : cloné par apps.js (les textes dynamiques sont posés avec textContent) -->
+<!-- Tuile d'application : clonée par apps.js (les textes dynamiques sont posés avec textContent).
+     Les bordures sont partagées : la grille porte le filet haut et gauche, chaque tuile le filet bas et droit. -->
 <template id="tpl-app">
-	<article class="card card-border bg-surface">
-		<div class="card-body gap-3 p-5">
-			<div class="flex items-start gap-3">
-				<img data-icon src="/app-icons/default.svg" alt="" width="48" height="48" class="size-12 shrink-0 rounded-xl object-contain" />
+	<article class="flex min-w-0 flex-col border-b border-r border-border bg-bg transition-colors hover:bg-surface">
+		<div class="flex items-center justify-between gap-3 border-b border-border px-5 py-3">
+			<span data-index class="num-chip"></span>
+			<span data-repo class="mono-label min-w-0 truncate text-muted"></span>
+		</div>
+
+		<div class="flex flex-1 flex-col gap-4 p-5">
+			<div class="flex items-start gap-4">
+				<img data-icon src="/app-icons/default.svg" alt="" width="56" height="56" class="size-14 shrink-0 rounded-xl object-contain" />
 				<div class="min-w-0 flex-1">
-					<h2 data-name class="card-title text-base [overflow-wrap:anywhere]"></h2>
-					<div class="mt-1 flex flex-wrap gap-1.5">
-						<span data-badge data-state="none" class="badge badge-sm badge-soft data-[state=none]:badge-neutral data-[state=ok]:badge-success data-[state=update]:badge-warning"></span>
-						<span data-running hidden class="badge badge-sm badge-soft badge-info"></span>
+					<h2 data-name class="text-[1.4rem] font-semibold leading-tight [overflow-wrap:anywhere]"></h2>
+					<p data-description class="mt-1 text-sm text-muted [overflow-wrap:anywhere]"></p>
+				</div>
+			</div>
+
+			<div class="flex flex-wrap gap-2">
+				<span data-badge data-state="none" class="state-badge mono-label"></span>
+				<span data-running data-state="running" hidden class="state-badge mono-label"></span>
+			</div>
+
+			<p data-version class="text-sm text-muted [overflow-wrap:anywhere]"></p>
+
+			<div class="mt-auto">
+				<!-- Action principale + menu des actions secondaires -->
+				<div data-actions class="flex min-h-10 items-stretch gap-2">
+					<button type="button" data-primary data-action="install" data-variant="solid" class="btn mono-label h-10 min-h-10 min-w-0 flex-1 border px-2 font-bold tracking-[0.12em] data-[variant=outline]:border-fg/50 data-[variant=outline]:bg-transparent data-[variant=outline]:text-fg data-[variant=outline]:hover:border-fg data-[variant=solid]:border-fg data-[variant=solid]:bg-fg data-[variant=solid]:text-bg data-[variant=solid]:hover:opacity-90 data-[variant=muted]:border-border data-[variant=muted]:bg-transparent data-[variant=muted]:text-muted disabled:cursor-not-allowed">
+						<span data-primary-label class="truncate"></span>
+					</button>
+
+					<div data-menu-wrap class="relative shrink-0">
+						<button type="button" data-menu-btn aria-haspopup="menu" aria-expanded="false" data-i18n-label="common.actions.more" data-i18n-title="common.actions.more" aria-label={t('common.actions.more')} title={t('common.actions.more')} class="btn btn-square h-10 min-h-10 w-10 border-border bg-transparent">
+							<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+								<circle cx="5" cy="12" r="1.6" />
+								<circle cx="12" cy="12" r="1.6" />
+								<circle cx="19" cy="12" r="1.6" />
+							</svg>
+						</button>
+						<div data-menu role="menu" hidden class="absolute bottom-full right-0 z-20 mb-1 min-w-48 border border-border bg-surface py-1 shadow-lg">
+							<button type="button" role="menuitem" data-action="launch" data-menu-item="launch" class="mono-label flex min-h-10 w-full cursor-pointer items-center px-3 text-left hover:bg-fg/10 focus-visible:bg-fg/10 disabled:cursor-not-allowed disabled:text-muted">
+								<span data-menu-launch-label></span>
+							</button>
+							<button type="button" role="menuitem" data-action="uninstall" data-menu-item="uninstall" class="mono-label flex min-h-10 w-full cursor-pointer items-center px-3 text-left text-danger hover:bg-fg/10 focus-visible:bg-fg/10">
+								<span data-i18n="common.actions.uninstall">{t('common.actions.uninstall')}</span>
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<p data-description class="text-sm text-muted [overflow-wrap:anywhere]"></p>
-
-			<dl class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
-				<dd data-installed></dd>
-				<dd data-latest></dd>
-			</dl>
-
-			<!-- Progression d'une opération (visible seulement pendant une installation, mise à jour ou désinstallation) -->
-			<div data-progress hidden class="flex flex-col gap-2">
-				<p data-progress-text role="status" aria-live="polite" class="text-xs"></p>
-				<div class="flex items-center gap-2">
-					<progress data-progress-bar max="1" aria-label={t('common.progress.label')} data-i18n-label="common.progress.label" class="progress flex-1"></progress>
-					<button type="button" data-action="cancel" class="btn btn-xs"><span data-i18n="common.actions.cancel">{t('common.actions.cancel')}</span></button>
+				<!-- Progression d'une opération : remplace les boutons (installation, mise à jour, désinstallation) -->
+				<div data-progress hidden class="flex min-h-10 items-center gap-2">
+					<div class="min-w-0 flex-1">
+						<p data-progress-text role="status" aria-live="polite" class="mb-1.5 text-xs [overflow-wrap:anywhere]"></p>
+						<progress data-progress-bar max="1" aria-label={t('common.progress.label')} data-i18n-label="common.progress.label" class="progress h-1 w-full text-(--chip)"></progress>
+					</div>
+					<button type="button" data-action="cancel" data-i18n-label="common.actions.cancel" data-i18n-title="common.actions.cancel" aria-label={t('common.actions.cancel')} title={t('common.actions.cancel')} class="btn btn-square h-10 min-h-10 w-10 shrink-0 border-border bg-transparent">
+						<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
+							<path d="M18 6 6 18" />
+							<path d="m6 6 12 12" />
+						</svg>
+					</button>
 				</div>
-			</div>
-
-			<div class="card-actions mt-1 flex-wrap justify-start gap-2">
-				<button type="button" data-action="install" class="btn btn-sm border-0 bg-fg text-bg hover:opacity-90"><span data-i18n="common.actions.install">{t('common.actions.install')}</span></button>
-				<button type="button" data-action="launch" class="btn btn-sm border-0 bg-fg text-bg hover:opacity-90">{t('common.actions.launch')}</button>
-				<button type="button" data-action="update" class="btn btn-sm"><span data-i18n="common.actions.update">{t('common.actions.update')}</span></button>
-				<button type="button" data-action="uninstall" class="btn btn-sm btn-ghost text-danger"><span data-i18n="common.actions.uninstall">{t('common.actions.uninstall')}</span></button>
 			</div>
 		</div>
 	</article>

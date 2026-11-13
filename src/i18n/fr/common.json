@@ -8,6 +8,19 @@
     "theme": "Thème",
     "language": "Langue"
   },
+  "toolbar": {
+    "filters": "Filtrer les applications",
+    "filter": {
+      "all": "Toutes",
+      "installed": "Installées",
+      "updates": "Mises à jour",
+      "notInstalled": "Non installées"
+    },
+    "searchLabel": "Rechercher une application",
+    "search": "Rechercher…",
+    "noResults": "Aucune application ne correspond à ce filtre ou à cette recherche.",
+    "reset": "Réinitialiser"
+  },
   "selfUpdate": {
     "title": "Mettre à jour le Lanceur",
     "available": "Mise à jour du Lanceur disponible ({latest})",
@@ -26,22 +39,24 @@
     "noTauri": "La liste des applications n’est disponible que dans l’application de bureau."
   },
   "card": {
-    "installed": "Installée : {version}",
-    "latest": "Dernière : {version}"
+    "version": "Version {version}",
+    "installedOk": "{version} installée",
+    "updateFromTo": "{installed} installée → {latest} disponible"
   },
   "badge": {
-    "upToDate": "À jour",
+    "upToDate": "Installée · à jour",
     "updateAvailable": "Mise à jour disponible",
-    "notInstalled": "Non installée",
+    "notInstalled": "Disponible à l’installation",
     "running": "En cours d’exécution"
   },
   "actions": {
     "install": "Installer",
-    "launch": "Lancer",
+    "launch": "Ouvrir",
     "launchRunning": "Déjà lancée",
-    "update": "Mettre à jour",
+    "updateTo": "Mettre à jour vers {version}",
     "uninstall": "Désinstaller",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "more": "Plus d’actions"
   },
   "progress": {
     "label": "Progression de l’opération",
@@ -98,5 +113,13 @@
     "launch_failed": "Impossible de lancer l’application.",
     "dev_mode": "Cette action n’est pas disponible en mode développement.",
     "io": "Erreur d’accès aux fichiers de l’ordinateur."
+  },
+  "footer": {
+    "appsOne": "{count} application",
+    "appsOther": "{count} applications",
+    "platform": "Windows"
+  },
+  "demo": {
+    "noAction": "Mode démo : aucune action n’est exécutée."
   }
 }

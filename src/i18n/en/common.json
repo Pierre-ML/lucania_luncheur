@@ -8,6 +8,19 @@
     "theme": "Theme",
     "language": "Language"
   },
+  "toolbar": {
+    "filters": "Filter applications",
+    "filter": {
+      "all": "All",
+      "installed": "Installed",
+      "updates": "Updates",
+      "notInstalled": "Not installed"
+    },
+    "searchLabel": "Search applications",
+    "search": "Search…",
+    "noResults": "No application matches this filter or search.",
+    "reset": "Reset"
+  },
   "selfUpdate": {
     "title": "Update the Launcher",
     "available": "Launcher update available ({latest})",
@@ -26,22 +39,24 @@
     "noTauri": "The application list is only available in the desktop app."
   },
   "card": {
-    "installed": "Installed: {version}",
-    "latest": "Latest: {version}"
+    "version": "Version {version}",
+    "installedOk": "{version} installed",
+    "updateFromTo": "{installed} installed → {latest} available"
   },
   "badge": {
-    "upToDate": "Up to date",
+    "upToDate": "Installed · up to date",
     "updateAvailable": "Update available",
-    "notInstalled": "Not installed",
+    "notInstalled": "Available to install",
     "running": "Running"
   },
   "actions": {
     "install": "Install",
-    "launch": "Launch",
+    "launch": "Open",
     "launchRunning": "Already running",
-    "update": "Update",
+    "updateTo": "Update to {version}",
     "uninstall": "Uninstall",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "more": "More actions"
   },
   "progress": {
     "label": "Operation progress",
@@ -98,5 +113,13 @@
     "launch_failed": "Could not launch the application.",
     "dev_mode": "This action is not available in development mode.",
     "io": "Error accessing files on this computer."
+  },
+  "footer": {
+    "appsOne": "{count} application",
+    "appsOther": "{count} applications",
+    "platform": "Windows"
+  },
+  "demo": {
+    "noAction": "Demo mode: no action is performed."
   }
 }

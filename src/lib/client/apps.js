@@ -2,6 +2,8 @@
 import { applyI18n, getLang, t } from './i18n.js';
 import { downloadProgress } from './format.js';
 import { inTauri } from './tauri.js';
+import { matches } from './filters.js';
+import { closeMenus } from './menu.js';
 
 /**
  * @typedef {'install'|'update'|'uninstall'} Busy
@@ -14,6 +16,8 @@ import { inTauri } from './tauri.js';
  */
 
 const DEFAULT_ICON = '/app-icons/default.svg';
+/** Nombre de couleurs de pastille (voir global.css). */
+const TONES = 8;
 
 /** @type {AppView[]} */
 let apps = [];
@@ -82,13 +86,28 @@ function progressView(op, p) {
   return { text: t(p.phase === 'closing' ? 'common.progress.closing' : 'common.progress.running'), value: null };
 }
 
-/** Met à jour une carte existante, sans la reconstruire. @param {HTMLElement} card @param {AppView} app */
+/** Texte de la ligne de version. @param {AppView} app */
+function versionText(app) {
+  const latest = app.latestVersion ?? '–';
+  if (!app.installed) return t('common.card.version', { version: latest });
+  const installed = app.installedVersion ?? '–';
+  if (app.updateAvailable) return t('common.card.updateFromTo', { installed, latest });
+  return t('common.card.installedOk', { version: installed });
+}
+
+/** Met à jour une tuile existante, sans la reconstruire. @param {HTMLElement} card @param {AppView} app */
 function updateCard(card, app) {
   /** @param {string} sel */
   const q = (sel) => /** @type {HTMLElement} */ (card.querySelector(sel));
   const op = currentOp(app);
   const working = op !== null;
   const p = progress.get(app.id);
+
+  // Position dans la liste complète : numéro et couleur restent stables quel que soit le filtre
+  const index = Math.max(0, apps.findIndex((a) => a.id === app.id));
+  card.dataset.tone = String(index % TONES);
+  q('[data-index]').textContent = String(index + 1).padStart(2, '0');
+  q('[data-repo]').textContent = app.repo ?? '';
 
   const img = /** @type {HTMLImageElement} */ (q('[data-icon]'));
   const src = iconUrl(app.icon);
@@ -99,8 +118,7 @@ function updateCard(card, app) {
 
   q('[data-name]').textContent = app.name;
   q('[data-description]').textContent = app.description?.[getLang()] || app.description?.en || app.description?.fr || '';
-  q('[data-installed]').textContent = t('common.card.installed', { version: app.installedVersion ?? '–' });
-  q('[data-latest]').textContent = t('common.card.latest', { version: app.latestVersion ?? '–' });
+  q('[data-version]').textContent = versionText(app);
 
   const badge = q('[data-badge]');
   const state = !app.installed ? 'none' : app.updateAvailable ? 'update' : 'ok';
@@ -110,21 +128,40 @@ function updateCard(card, app) {
   running.hidden = !(app.installed && app.running);
   running.textContent = t('common.badge.running');
 
-  /** @param {string} action @param {boolean} visible @param {boolean} disabled */
-  const button = (action, visible, disabled) => {
-    const b = /** @type {HTMLButtonElement} */ (q(`[data-action="${action}"]`));
-    b.hidden = !visible;
-    b.disabled = disabled;
-    return b;
-  };
-  button('install', !app.installed, working);
-  const launch = button('launch', app.installed, working || app.running);
-  launch.textContent = t(app.running ? 'common.actions.launchRunning' : 'common.actions.launch');
-  button('update', app.installed && app.updateAvailable, working);
-  button('uninstall', app.installed, working);
+  // Action principale : installer, mettre à jour (plein) ou ouvrir (contour, désactivé si déjà lancée)
+  const primary = /** @type {HTMLButtonElement} */ (q('[data-primary]'));
+  const label = q('[data-primary-label]');
+  if (!app.installed) {
+    primary.dataset.action = 'install';
+    primary.dataset.variant = 'solid';
+    label.textContent = t('common.actions.install');
+  } else if (app.updateAvailable) {
+    primary.dataset.action = 'update';
+    primary.dataset.variant = 'solid';
+    label.textContent = t('common.actions.updateTo', { version: app.latestVersion ?? '–' });
+  } else {
+    primary.dataset.action = 'launch';
+    primary.dataset.variant = app.running ? 'muted' : 'outline';
+    label.textContent = t(app.running ? 'common.actions.launchRunning' : 'common.actions.launch');
+  }
+  primary.disabled = working || (primary.dataset.action === 'launch' && app.running);
 
-  const box = q('[data-progress]');
+  // Menu des actions secondaires : masqué s'il est vide
+  const launchItem = /** @type {HTMLButtonElement} */ (q('[data-menu-item="launch"]'));
+  launchItem.hidden = !(app.installed && app.updateAvailable);
+  launchItem.disabled = working || app.running;
+  q('[data-menu-launch-label]').textContent = t(app.running ? 'common.actions.launchRunning' : 'common.actions.launch');
+  const uninstallItem = /** @type {HTMLButtonElement} */ (q('[data-menu-item="uninstall"]'));
+  uninstallItem.hidden = !app.installed;
+  uninstallItem.disabled = working;
+  const menuEmpty = launchItem.hidden && uninstallItem.hidden;
+  q('[data-menu-wrap]').hidden = menuEmpty;
+  if (menuEmpty || working) closeMenus(card);
+
+  // Une opération en cours remplace les boutons par la progression
   const showProgress = op !== null && op !== 'launch';
+  q('[data-actions]').hidden = showProgress;
+  const box = q('[data-progress]');
   box.hidden = !showProgress;
   if (showProgress) {
     const view = progressView(op, p);
@@ -167,11 +204,12 @@ function refreshCard(id) {
   if (card && app) updateCard(card, app);
 }
 
-/** Rend la liste : squelettes, état vide ou cartes réconciliées par data-app-id. */
+/** Rend la liste : squelettes, états vides ou tuiles réconciliées par data-app-id (filtrées par masquage). */
 export function render() {
   const grid = $('[data-grid]');
   const skeleton = $('[data-skeleton]');
   const empty = $('[data-empty]');
+  const noResults = $('[data-noresults]');
   if (!grid || !skeleton || !empty) return;
 
   skeleton.hidden = loaded;
@@ -179,13 +217,21 @@ export function render() {
   empty.textContent = t(inTauri() ? 'common.empty.none' : 'common.empty.noTauri');
 
   const existing = new Map([...grid.children].map((c) => [/** @type {HTMLElement} */ (c).dataset.appId ?? '', /** @type {HTMLElement} */ (c)]));
+  let visible = 0;
   apps.forEach((app, i) => {
     const card = existing.get(app.id) ?? createCard(app.id);
     existing.delete(app.id);
     updateCard(card, app);
+    const show = matches(app);
+    card.hidden = !show;
+    if (show) visible++;
     if (grid.children[i] !== card) grid.insertBefore(card, grid.children[i] ?? null);
   });
   for (const stale of existing.values()) stale.remove();
+
+  // Les filets de la grille ne s'affichent que s'il y a des tuiles
+  grid.hidden = visible === 0;
+  if (noResults) noResults.hidden = !(loaded && apps.length > 0 && visible === 0);
   document.dispatchEvent(new CustomEvent('lanceur:apps'));
 }
 
