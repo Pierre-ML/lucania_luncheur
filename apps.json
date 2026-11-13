@@ -18,12 +18,8 @@
       "exe": "lucania.exe",
       "waitPidArg": "/LUCANIA_WAITPID=",
       "keepDataArg": "/UPDATE",
-      "installArgs": [
-        "/S"
-      ],
-      "updateArgs": [
-        "/S"
-      ],
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
       "maxSizeMb": 500
     },
     {
@@ -43,12 +39,8 @@
       "exe": "lucascrap.exe",
       "waitPidArg": "/MDL_WAITPID=",
       "keepDataArg": "/UPDATE",
-      "installArgs": [
-        "/S"
-      ],
-      "updateArgs": [
-        "/S"
-      ],
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
       "maxSizeMb": 500
     },
     {
@@ -68,12 +60,8 @@
       "exe": "app2.exe",
       "waitPidArg": "/APP2_WAITPID=",
       "keepDataArg": "/UPDATE",
-      "installArgs": [
-        "/S"
-      ],
-      "updateArgs": [
-        "/S"
-      ],
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
       "maxSizeMb": 500
     },
     {
@@ -93,12 +81,8 @@
       "exe": "app3.exe",
       "waitPidArg": "/APP3_WAITPID=",
       "keepDataArg": "/UPDATE",
-      "installArgs": [
-        "/S"
-      ],
-      "updateArgs": [
-        "/S"
-      ],
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
       "maxSizeMb": 500
     },
     {
@@ -118,12 +102,8 @@
       "exe": "app4.exe",
       "waitPidArg": "/APP4_WAITPID=",
       "keepDataArg": "/UPDATE",
-      "installArgs": [
-        "/S"
-      ],
-      "updateArgs": [
-        "/S"
-      ],
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
       "maxSizeMb": 500
     }
   ]
