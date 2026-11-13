@@ -381,11 +381,11 @@ mod tests {
     let apps = embedded();
     assert_eq!(apps.len(), 7, "les 7 entrées de apps.json doivent être valides");
     let enabled: Vec<_> = apps.iter().filter(|a| a.enabled).map(|a| a.id.as_str()).collect();
-    assert_eq!(enabled, ["lucania", "lucascrap", "lucamedia", "lucaaudit"]);
-    let lucania = &apps[0];
-    assert_eq!(lucania.exe, "lucania.exe");
-    assert_eq!(lucania.wait_pid_arg.as_deref(), Some("/LUCANIA_WAITPID="));
-    assert_eq!(lucania.max_bytes, 500 * 1024 * 1024);
+    assert_eq!(enabled, ["lucaia", "lucascrap", "lucamedia", "lucaaudit"]);
+    let lucaia = &apps[0];
+    assert_eq!((lucaia.product_name.as_str(), lucaia.exe.as_str(), lucaia.identifier.as_str()), ("Luca-ia", "lucania.exe", "com.lucania.desktop"));
+    assert_eq!(lucaia.wait_pid_arg.as_deref(), Some("/LUCANIA_WAITPID="));
+    assert_eq!(lucaia.max_bytes, 500 * 1024 * 1024);
     // Clé de désinstallation, exe et identifiant : ceux des releases publiées (productName et
     // mainBinaryName des tauri.conf.json aux tags v1.0.0 / v1.0.2 / v1.0.2), pas ceux de main.
     let by_id = |id: &str| apps.iter().find(|a| a.id == id).unwrap();
@@ -497,7 +497,7 @@ mod tests {
     assert!(!registry.apply_remote(&only_foreign.to_string()));
     assert_eq!(registry.all().len(), 7, "registre embarqué conservé");
     assert!(registry.apply_remote(&json));
-    assert!(registry.find("autre").is_some() && registry.find("lucania").is_none());
+    assert!(registry.find("autre").is_some() && registry.find("lucaia").is_none());
     assert!(!registry.needs_refresh(false) && registry.needs_refresh(true));
   }
 }

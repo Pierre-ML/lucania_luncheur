@@ -422,8 +422,8 @@ mod tests {
 
   #[test]
   fn url_des_fichiers_de_release() {
-    let def = Registry::new().find("lucania").expect("Lucania activée dans apps.json");
-    assert_eq!(release_asset_url(&def, &def.setup), "https://github.com/Pierre-ML/Lucania/releases/latest/download/Lucania-Setup.exe");
+    let def = Registry::new().find("lucaia").expect("Luca-ia activée dans apps.json");
+    assert_eq!(release_asset_url(&def, &def.setup), "https://github.com/Pierre-ML/Luca-ia/releases/latest/download/Luca-ia-Setup.exe");
     assert!(github::allowed_host(&reqwest::Url::parse(&release_asset_url(&def, &def.updater)).unwrap()));
   }
 }

@@ -2,19 +2,19 @@
   "schema": 1,
   "apps": [
     {
-      "id": "lucania",
+      "id": "lucaia",
       "enabled": true,
-      "name": "Lucania",
+      "name": "Luca-ia",
       "description": {
         "fr": "Interface de chat locale pour modèles GGUF, moteur llama.cpp intégré.",
         "en": "Local chat interface for GGUF models, with a built-in llama.cpp engine."
       },
-      "icon": "lucania.svg",
-      "repo": "Pierre-ML/Lucania",
-      "setup": "Lucania-Setup.exe",
-      "updater": "Lucania-Update.exe",
+      "icon": "lucaia.svg",
+      "repo": "Pierre-ML/Luca-ia",
+      "setup": "Luca-ia-Setup.exe",
+      "updater": "Luca-ia-Update.exe",
       "identifier": "com.lucania.desktop",
-      "productName": "Lucania",
+      "productName": "Luca-ia",
       "exe": "lucania.exe",
       "waitPidArg": "/LUCANIA_WAITPID=",
       "keepDataArg": "/UPDATE",
