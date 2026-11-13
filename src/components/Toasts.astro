@@ -1,0 +1,17 @@
+---
+import { t } from '../lib/client/i18n.js';
+---
+<!-- Zone des toasts (aria-live) et modèle d'un toast, clonés par toast.js -->
+<div id="toasts" class="toast toast-end toast-bottom z-50" aria-live="polite"></div>
+
+<template id="tpl-toast">
+	<div class="alert alert-soft max-w-sm shadow-lg">
+		<span data-toast-text class="text-sm [overflow-wrap:anywhere]"></span>
+		<button type="button" data-toast-close hidden aria-label={t('common.close')} class="btn btn-ghost btn-xs btn-square">
+			<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
+				<path d="M18 6 6 18" />
+				<path d="m6 6 12 12" />
+			</svg>
+		</button>
+	</div>
+</template>

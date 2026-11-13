@@ -1,0 +1,102 @@
+{
+  "loading": "Loading…",
+  "close": "Close",
+  "cancel": "Cancel",
+  "header": {
+    "refresh": "Refresh",
+    "updateAll": "Update all",
+    "theme": "Theme",
+    "language": "Language"
+  },
+  "selfUpdate": {
+    "title": "Update the Launcher",
+    "available": "Launcher update available ({latest})",
+    "confirmTitle": "Update the Launcher?",
+    "confirmMessage": "Version {latest} will replace version {current}. The Launcher will close and restart.",
+    "confirmOk": "Update",
+    "downloading": "Downloading…",
+    "progress": "{percent} ({done} of {total} MB)",
+    "progressNoTotal": "{done} MB downloaded",
+    "launching": "Installing…",
+    "upToDate": "The Launcher is up to date ({current}).",
+    "progressLabel": "Launcher update progress"
+  },
+  "empty": {
+    "none": "No applications available at the moment.",
+    "noTauri": "The application list is only available in the desktop app."
+  },
+  "card": {
+    "installed": "Installed: {version}",
+    "latest": "Latest: {version}"
+  },
+  "badge": {
+    "upToDate": "Up to date",
+    "updateAvailable": "Update available",
+    "notInstalled": "Not installed",
+    "running": "Running"
+  },
+  "actions": {
+    "install": "Install",
+    "launch": "Launch",
+    "launchRunning": "Already running",
+    "update": "Update",
+    "uninstall": "Uninstall",
+    "cancel": "Cancel"
+  },
+  "progress": {
+    "label": "Operation progress",
+    "starting": "Preparing…",
+    "download": "Downloading… {percent} ({done} of {total} MB)",
+    "downloadNoTotal": "Downloading… {done} MB",
+    "closing": "Closing the application…",
+    "running": "Installing…",
+    "uninstalling": "Uninstalling…"
+  },
+  "uninstall": {
+    "title": "Uninstall {name}?",
+    "message": "The application will be removed from this computer.",
+    "deleteData": "Also delete the application data",
+    "confirm": "Uninstall"
+  },
+  "updateConfirm": {
+    "title": "Update {name}?",
+    "message": "{name} is running: it will be closed for the update.",
+    "confirm": "Update"
+  },
+  "updateAllConfirm": {
+    "title": "Update all?",
+    "message": "These applications are running and will be closed: {names}.",
+    "confirm": "Update all"
+  },
+  "toast": {
+    "installed": "{name} is installed.",
+    "updated": "{name} is up to date.",
+    "uninstalled": "{name} has been uninstalled.",
+    "updateAllOk": "All applications have been updated.",
+    "updateAllPartial": "{ok} of {total} updated. Failed or cancelled: {names}."
+  },
+  "warnings": {
+    "offline": "Offline: the latest versions could not be checked.",
+    "rate_limited": "GitHub rate limit reached: try again in a few minutes to check for updates."
+  },
+  "errors": {
+    "generic": "An error occurred",
+    "offline": "No Internet connection.",
+    "rate_limited": "GitHub is temporarily limiting requests. Try again in a few minutes.",
+    "no_release": "No downloadable release was found.",
+    "http": "The download server returned an error.",
+    "too_large": "The file to download is too large.",
+    "invalid_file": "The downloaded file is invalid or corrupted.",
+    "cancelled": "Operation cancelled.",
+    "busy": "Another operation is already running on this application.",
+    "unknown_app": "Unknown application.",
+    "not_installed": "This application is not installed.",
+    "already_installed": "This application is already installed.",
+    "installer_failed": "The installer failed.",
+    "uninstall_failed": "The uninstall failed.",
+    "still_running": "The application is still running. Close it and try again.",
+    "launch_failed": "Could not launch the application.",
+    "dev_mode": "This action is not available in development mode.",
+    "io": "Error accessing files on this computer."
+  }
+}

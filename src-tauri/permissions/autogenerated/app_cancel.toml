@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-app-cancel"
+description = "Enables the app_cancel command without any pre-configured scope."
+commands.allow = ["app_cancel"]
+
+[[permission]]
+identifier = "deny-app-cancel"
+description = "Denies the app_cancel command without any pre-configured scope."
+commands.deny = ["app_cancel"]

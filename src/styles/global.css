@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light, dark, dim, night, nord, dracula, cupcake, business, coffee, sunset, emerald;
+  exclude: rootscrollgutter;
+}
+@plugin "daisyui/theme" {
+  name: "lucania";
+  default: true;
+  prefersdark: false;
+  color-scheme: dark;
+  --color-base-100: #0b0b0c;
+  --color-base-200: #141416;
+  --color-base-300: #1f1f22;
+  --color-base-content: #f2f2f3;
+  --color-primary: #f2f2f3;
+  --color-primary-content: #0b0b0c;
+  --color-secondary: #26262a;
+  --color-secondary-content: #f2f2f3;
+  --color-accent: #e5383b;
+  --color-accent-content: #ffffff;
+  --color-neutral: #18181a;
+  --color-neutral-content: #f2f2f3;
+  --color-info: #60a5fa;
+  --color-info-content: #0b0b0c;
+  --color-success: #10b981;
+  --color-success-content: #0b0b0c;
+  --color-warning: #f59e0b;
+  --color-warning-content: #0b0b0c;
+  --color-error: #ff4d4f;
+  --color-error-content: #0b0b0c;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* Jetons de l'app rebranchés sur les variables daisyUI : toute l'interface suit le thème */
+@theme inline {
+  --color-bg: var(--color-base-100);
+  --color-fg: var(--color-base-content);
+  --color-surface: var(--color-base-200);
+  --color-border: var(--color-base-300);
+  --color-danger: var(--color-error);
+  --color-muted: var(--app-muted);
+}
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Variable intermédiaire, évaluée dans chaque portée de thème.
+   Par défaut (thèmes daisyUI) : dérivée des couleurs du thème. */
+@layer base {
+  :root,
+  [data-theme] {
+    --app-muted: color-mix(in oklab, var(--color-base-content) 58%, var(--color-base-100));
+  }
+  /* Thème Lucania : valeur exacte d'origine */
+  :root:not([data-theme]),
+  [data-theme="lucania"] {
+    --app-muted: #8e8e94;
+  }
+}
+
+@layer base {
+  html { font-size: 16px; }
+  body { font-family: var(--font-sans); line-height: 1.6; }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  * { scrollbar-width: thin; scrollbar-color: var(--color-border) transparent; }
+}
+
+/* Menus déroulants natifs (<select>) lisibles dans tous les thèmes */
+@layer base {
+  /* Schéma de couleurs par thème : le popup natif suit le bon schéma */
+  :root:not([data-theme]),
+  [data-theme="lucania"],
+  [data-theme="dark"],
+  [data-theme="dim"],
+  [data-theme="night"],
+  [data-theme="dracula"],
+  [data-theme="business"],
+  [data-theme="coffee"],
+  [data-theme="sunset"] { color-scheme: dark; }
+  [data-theme="light"],
+  [data-theme="nord"],
+  [data-theme="cupcake"],
+  [data-theme="emerald"] { color-scheme: light; }
+
+  select option,
+  select optgroup {
+    background-color: var(--color-surface);
+    color: var(--color-fg);
+  }
+  select option:disabled { color: var(--color-muted); }
+}

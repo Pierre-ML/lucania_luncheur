@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-self-check-update"
+description = "Enables the self_check_update command without any pre-configured scope."
+commands.allow = ["self_check_update"]
+
+[[permission]]
+identifier = "deny-self-check-update"
+description = "Denies the self_check_update command without any pre-configured scope."
+commands.deny = ["self_check_update"]

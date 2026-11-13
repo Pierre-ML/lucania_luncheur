@@ -1,0 +1,43 @@
+---
+import { t } from '../lib/client/i18n.js';
+---
+<!-- Modèle de carte : cloné par apps.js (les textes dynamiques sont posés avec textContent) -->
+<template id="tpl-app">
+	<article class="card card-border bg-surface">
+		<div class="card-body gap-3 p-5">
+			<div class="flex items-start gap-3">
+				<img data-icon src="/app-icons/default.svg" alt="" width="48" height="48" class="size-12 shrink-0 rounded-xl object-contain" />
+				<div class="min-w-0 flex-1">
+					<h2 data-name class="card-title text-base [overflow-wrap:anywhere]"></h2>
+					<div class="mt-1 flex flex-wrap gap-1.5">
+						<span data-badge data-state="none" class="badge badge-sm badge-soft data-[state=none]:badge-neutral data-[state=ok]:badge-success data-[state=update]:badge-warning"></span>
+						<span data-running hidden class="badge badge-sm badge-soft badge-info"></span>
+					</div>
+				</div>
+			</div>
+
+			<p data-description class="text-sm text-muted [overflow-wrap:anywhere]"></p>
+
+			<dl class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
+				<dd data-installed></dd>
+				<dd data-latest></dd>
+			</dl>
+
+			<!-- Progression d'une opération (visible seulement pendant une installation, mise à jour ou désinstallation) -->
+			<div data-progress hidden class="flex flex-col gap-2">
+				<p data-progress-text role="status" aria-live="polite" class="text-xs"></p>
+				<div class="flex items-center gap-2">
+					<progress data-progress-bar max="1" aria-label={t('common.progress.label')} data-i18n-label="common.progress.label" class="progress flex-1"></progress>
+					<button type="button" data-action="cancel" class="btn btn-xs"><span data-i18n="common.actions.cancel">{t('common.actions.cancel')}</span></button>
+				</div>
+			</div>
+
+			<div class="card-actions mt-1 flex-wrap justify-start gap-2">
+				<button type="button" data-action="install" class="btn btn-sm border-0 bg-fg text-bg hover:opacity-90"><span data-i18n="common.actions.install">{t('common.actions.install')}</span></button>
+				<button type="button" data-action="launch" class="btn btn-sm border-0 bg-fg text-bg hover:opacity-90">{t('common.actions.launch')}</button>
+				<button type="button" data-action="update" class="btn btn-sm"><span data-i18n="common.actions.update">{t('common.actions.update')}</span></button>
+				<button type="button" data-action="uninstall" class="btn btn-sm btn-ghost text-danger"><span data-i18n="common.actions.uninstall">{t('common.actions.uninstall')}</span></button>
+			</div>
+		</div>
+	</article>
+</template>

@@ -1,0 +1,102 @@
+{
+  "loading": "Chargement…",
+  "close": "Fermer",
+  "cancel": "Annuler",
+  "header": {
+    "refresh": "Actualiser",
+    "updateAll": "Tout mettre à jour",
+    "theme": "Thème",
+    "language": "Langue"
+  },
+  "selfUpdate": {
+    "title": "Mettre à jour le Lanceur",
+    "available": "Mise à jour du Lanceur disponible ({latest})",
+    "confirmTitle": "Mettre à jour le Lanceur ?",
+    "confirmMessage": "La version {latest} va remplacer la version {current}. Le Lanceur va se fermer puis redémarrer.",
+    "confirmOk": "Mettre à jour",
+    "downloading": "Téléchargement…",
+    "progress": "{percent} ({done} sur {total} Mo)",
+    "progressNoTotal": "{done} Mo téléchargés",
+    "launching": "Installation en cours…",
+    "upToDate": "Le Lanceur est à jour ({current}).",
+    "progressLabel": "Progression de la mise à jour du Lanceur"
+  },
+  "empty": {
+    "none": "Aucune application disponible pour le moment.",
+    "noTauri": "La liste des applications n’est disponible que dans l’application de bureau."
+  },
+  "card": {
+    "installed": "Installée : {version}",
+    "latest": "Dernière : {version}"
+  },
+  "badge": {
+    "upToDate": "À jour",
+    "updateAvailable": "Mise à jour disponible",
+    "notInstalled": "Non installée",
+    "running": "En cours d’exécution"
+  },
+  "actions": {
+    "install": "Installer",
+    "launch": "Lancer",
+    "launchRunning": "Déjà lancée",
+    "update": "Mettre à jour",
+    "uninstall": "Désinstaller",
+    "cancel": "Annuler"
+  },
+  "progress": {
+    "label": "Progression de l’opération",
+    "starting": "Préparation…",
+    "download": "Téléchargement… {percent} ({done} sur {total} Mo)",
+    "downloadNoTotal": "Téléchargement… {done} Mo",
+    "closing": "Fermeture de l’application…",
+    "running": "Installation en cours…",
+    "uninstalling": "Désinstallation en cours…"
+  },
+  "uninstall": {
+    "title": "Désinstaller {name} ?",
+    "message": "L’application sera supprimée de cet ordinateur.",
+    "deleteData": "Supprimer aussi les données de l’application",
+    "confirm": "Désinstaller"
+  },
+  "updateConfirm": {
+    "title": "Mettre à jour {name} ?",
+    "message": "{name} est en cours d’exécution : elle sera fermée pour la mise à jour.",
+    "confirm": "Mettre à jour"
+  },
+  "updateAllConfirm": {
+    "title": "Tout mettre à jour ?",
+    "message": "Ces applications sont en cours d’exécution et seront fermées : {names}.",
+    "confirm": "Tout mettre à jour"
+  },
+  "toast": {
+    "installed": "{name} est installée.",
+    "updated": "{name} est à jour.",
+    "uninstalled": "{name} a été désinstallée.",
+    "updateAllOk": "Toutes les applications ont été mises à jour.",
+    "updateAllPartial": "{ok} mises à jour sur {total}. Échec ou annulation : {names}."
+  },
+  "warnings": {
+    "offline": "Hors ligne : impossible de vérifier les dernières versions.",
+    "rate_limited": "Limite GitHub atteinte : réessaie dans quelques minutes pour vérifier les mises à jour."
+  },
+  "errors": {
+    "generic": "Une erreur est survenue",
+    "offline": "Pas de connexion Internet.",
+    "rate_limited": "GitHub limite temporairement les requêtes. Réessaie dans quelques minutes.",
+    "no_release": "Aucune version téléchargeable n’a été trouvée.",
+    "http": "Le serveur de téléchargement a répondu par une erreur.",
+    "too_large": "Le fichier à télécharger est trop volumineux.",
+    "invalid_file": "Le fichier téléchargé est invalide ou corrompu.",
+    "cancelled": "Opération annulée.",
+    "busy": "Une autre opération est déjà en cours sur cette application.",
+    "unknown_app": "Application inconnue.",
+    "not_installed": "Cette application n’est pas installée.",
+    "already_installed": "Cette application est déjà installée.",
+    "installer_failed": "L’installateur a échoué.",
+    "uninstall_failed": "La désinstallation a échoué.",
+    "still_running": "L’application est encore en cours d’exécution. Ferme-la puis réessaie.",
+    "launch_failed": "Impossible de lancer l’application.",
+    "dev_mode": "Cette action n’est pas disponible en mode développement.",
+    "io": "Erreur d’accès aux fichiers de l’ordinateur."
+  }
+}

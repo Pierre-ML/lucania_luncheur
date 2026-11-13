@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import AppCard from '../components/AppCard.astro';
+import ConfirmDialog from '../components/ConfirmDialog.astro';
+import Toasts from '../components/Toasts.astro';
+import { t } from '../lib/client/i18n.js';
+---
+<Layout>
+	<Header />
+	<main class="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6">
+		<!-- Squelettes affichés jusqu'au premier chargement de la liste -->
+		<div data-skeleton aria-busy="true" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			<span class="sr-only">{t('common.loading')}</span>
+			{[0, 1, 2].map(() => (
+				<div aria-hidden="true" class="card card-border bg-surface">
+					<div class="card-body gap-3 p-5">
+						<div class="flex items-start gap-3">
+							<div class="skeleton size-12 shrink-0 rounded-xl"></div>
+							<div class="flex-1 space-y-2">
+								<div class="skeleton h-4 w-1/2"></div>
+								<div class="skeleton h-3 w-1/3"></div>
+							</div>
+						</div>
+						<div class="skeleton h-3 w-full"></div>
+						<div class="skeleton h-3 w-3/4"></div>
+						<div class="skeleton mt-2 h-8 w-28"></div>
+					</div>
+				</div>
+			))}
+		</div>
+
+		<p data-empty hidden role="status" class="py-16 text-center text-sm text-muted"></p>
+
+		<div data-grid class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+	</main>
+
+	<AppCard />
+	<ConfirmDialog />
+	<Toasts />
+
+	<script>
+		import '../lib/client/main.js';
+	</script>
+</Layout>

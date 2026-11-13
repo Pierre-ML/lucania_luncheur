@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "apps": [
+    {
+      "id": "lucania",
+      "enabled": true,
+      "name": "Lucania",
+      "description": {
+        "fr": "Interface de chat locale pour modèles GGUF, moteur llama.cpp intégré.",
+        "en": "Local chat interface for GGUF models, with a built-in llama.cpp engine."
+      },
+      "icon": "lucania.svg",
+      "repo": "Pierre-ML/Lucania",
+      "setup": "Lucania-Setup.exe",
+      "updater": "Lucania-Update.exe",
+      "identifier": "com.lucania.desktop",
+      "productName": "Lucania",
+      "exe": "lucania.exe",
+      "waitPidArg": "/LUCANIA_WAITPID=",
+      "keepDataArg": "/UPDATE",
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
+      "maxSizeMb": 500
+    },
+    {
+      "id": "app2",
+      "enabled": false,
+      "name": "APP2",
+      "description": {
+        "fr": "Description de l'application 2 (à compléter).",
+        "en": "Description of application 2 (to be completed)."
+      },
+      "icon": "app2.svg",
+      "repo": "Pierre-ML/APP2",
+      "setup": "APP2-Setup.exe",
+      "updater": "APP2-Update.exe",
+      "identifier": "com.app2.desktop",
+      "productName": "APP2",
+      "exe": "app2.exe",
+      "waitPidArg": "/APP2_WAITPID=",
+      "keepDataArg": "/UPDATE",
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
+      "maxSizeMb": 500
+    },
+    {
+      "id": "app3",
+      "enabled": false,
+      "name": "APP3",
+      "description": {
+        "fr": "Description de l'application 3 (à compléter).",
+        "en": "Description of application 3 (to be completed)."
+      },
+      "icon": "app3.svg",
+      "repo": "Pierre-ML/APP3",
+      "setup": "APP3-Setup.exe",
+      "updater": "APP3-Update.exe",
+      "identifier": "com.app3.desktop",
+      "productName": "APP3",
+      "exe": "app3.exe",
+      "waitPidArg": "/APP3_WAITPID=",
+      "keepDataArg": "/UPDATE",
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
+      "maxSizeMb": 500
+    },
+    {
+      "id": "app4",
+      "enabled": false,
+      "name": "APP4",
+      "description": {
+        "fr": "Description de l'application 4 (à compléter).",
+        "en": "Description of application 4 (to be completed)."
+      },
+      "icon": "app4.svg",
+      "repo": "Pierre-ML/APP4",
+      "setup": "APP4-Setup.exe",
+      "updater": "APP4-Update.exe",
+      "identifier": "com.app4.desktop",
+      "productName": "APP4",
+      "exe": "app4.exe",
+      "waitPidArg": "/APP4_WAITPID=",
+      "keepDataArg": "/UPDATE",
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
+      "maxSizeMb": 500
+    }
+  ]
+}

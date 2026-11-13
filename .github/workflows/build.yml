@@ -1,0 +1,151 @@
+name: Build Windows
+
+# Signature SignPath (FACULTATIVE) : tant que le secret SIGNPATH_API_TOKEN n'existe pas, les étapes de
+# signature sont ignorées et les installateurs sont publiés non signés. Pour l'activer, créer dans
+# Settings > Secrets and variables > Actions :
+#   Secret   : SIGNPATH_API_TOKEN                      (jeton d'API SignPath)
+#   Variables (onglet « Variables ») :
+#     SIGNPATH_ORGANIZATION_ID               identifiant de l'organisation SignPath
+#     SIGNPATH_PROJECT_SLUG                  slug du projet
+#     SIGNPATH_SIGNING_POLICY_SLUG           slug de la politique de signature
+#     SIGNPATH_ARTIFACT_CONFIGURATION_SLUG   slug de la configuration d'artefact
+# La configuration d'artefact SignPath doit signer les deux exe (Lanceur-Setup.exe et Lanceur-Update.exe)
+# à la racine de l'artefact « lanceur-unsigned ».
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write   # publication de la release
+      actions: read     # nécessaire à SignPath pour lire l'artefact envoyé
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lire et vérifier la version
+        id: version
+        shell: bash
+        run: |
+          v=$(node -e '
+            const fs = require("fs");
+            const main = JSON.parse(fs.readFileSync("src-tauri/tauri.conf.json", "utf8")).version;
+            const pkg = JSON.parse(fs.readFileSync("package.json", "utf8")).version;
+            const lock = JSON.parse(fs.readFileSync("package-lock.json", "utf8"));
+            const cargo = (fs.readFileSync("src-tauri/Cargo.toml", "utf8").match(/^\[package\][\s\S]*?^version\s*=\s*"([^"]+)"/m) || [])[1];
+            const found = {
+              "package.json": pkg,
+              "package-lock.json (racine)": lock.version,
+              "package-lock.json (packages)": lock.packages && lock.packages[""] && lock.packages[""].version,
+              "src-tauri/Cargo.toml": cargo,
+            };
+            const bad = Object.entries(found).filter(([, x]) => x !== main);
+            if (!main || bad.length) {
+              for (const [f, x] of bad) console.error("::error::Version divergente dans " + f + " : " + x + " (tauri.conf.json : " + main + ")");
+              if (!main) console.error("::error::Version introuvable dans src-tauri/tauri.conf.json");
+              process.exit(1);
+            }
+            console.log(main);
+          ')
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+
+      - name: Vérifier si le tag existe déjà
+        id: tag
+        shell: bash
+        run: |
+          if [ -n "$(git ls-remote --tags origin "refs/tags/v${{ steps.version.outputs.version }}")" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - run: npm ci
+      - run: npm run desktop:build
+
+      - name: Vérifier les deux installateurs
+        shell: bash
+        run: |
+          d="src-tauri/target/release/bundle/release"
+          missing=0
+          for f in "Lanceur-Setup.exe" "Lanceur-Update.exe"; do
+            if [ ! -f "$d/$f" ]; then
+              echo "::error::Fichier manquant : $d/$f"
+              missing=1
+            fi
+          done
+          exit $missing
+
+      # SignPath : actif seulement si le secret existe (valeur jamais affichée)
+      - name: Détecter la configuration SignPath
+        id: signpath
+        shell: bash
+        env:
+          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}
+        run: |
+          if [ -n "$SIGNPATH_API_TOKEN" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "SignPath non configuré : installateurs publiés sans signature."
+          fi
+
+      - name: Envoyer les installateurs à signer
+        id: unsigned
+        if: steps.signpath.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: lanceur-unsigned
+          path: |
+            src-tauri/target/release/bundle/release/Lanceur-Setup.exe
+            src-tauri/target/release/bundle/release/Lanceur-Update.exe
+
+      - name: Signer avec SignPath
+        if: steps.signpath.outputs.enabled == 'true'
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ vars.SIGNPATH_SIGNING_POLICY_SLUG }}
+          artifact-configuration-slug: ${{ vars.SIGNPATH_ARTIFACT_CONFIGURATION_SLUG }}
+          github-artifact-id: ${{ steps.unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-directory: signed
+
+      - name: Remplacer les installateurs par les versions signées
+        if: steps.signpath.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          d="src-tauri/target/release/bundle/release"
+          missing=0
+          for f in "Lanceur-Setup.exe" "Lanceur-Update.exe"; do
+            if [ ! -s "signed/$f" ]; then
+              echo "::error::Fichier signé manquant : signed/$f"
+              missing=1
+            fi
+          done
+          [ $missing -eq 0 ] || exit 1
+          cp -f signed/Lanceur-Setup.exe signed/Lanceur-Update.exe "$d/"
+
+      - uses: softprops/action-gh-release@v2
+        if: steps.tag.outputs.exists == 'false'
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: Lanceur v${{ steps.version.outputs.version }}
+          files: |
+            src-tauri/target/release/bundle/release/Lanceur-Setup.exe
+            src-tauri/target/release/bundle/release/Lanceur-Update.exe

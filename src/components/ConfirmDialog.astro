@@ -1,0 +1,23 @@
+---
+import { t } from '../lib/client/i18n.js';
+---
+<!-- Boîte de confirmation unique, pilotée par dialog.js. Échap, Annuler et le fond ferment sans valider. -->
+<dialog id="confirm-dialog" class="modal" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+	<div class="modal-box border border-border bg-surface">
+		<h2 id="confirm-title" data-confirm-title class="text-lg font-semibold"></h2>
+		<p id="confirm-message" data-confirm-message class="mt-3 text-sm text-muted [overflow-wrap:anywhere]"></p>
+		<label data-confirm-option hidden class="mt-4 flex cursor-pointer items-center gap-2 text-sm">
+			<input type="checkbox" data-confirm-check class="checkbox checkbox-sm" />
+			<span data-confirm-check-label></span>
+		</label>
+		<div class="modal-action">
+			<form method="dialog">
+				<button data-confirm-cancel class="btn btn-sm">{t('common.cancel')}</button>
+			</form>
+			<button type="button" data-confirm-ok data-danger="false" class="btn btn-sm border-0 data-[danger=false]:bg-fg data-[danger=false]:text-bg data-[danger=true]:bg-danger data-[danger=true]:text-error-content hover:opacity-90"></button>
+		</div>
+	</div>
+	<form method="dialog" class="modal-backdrop">
+		<button aria-label={t('common.close')} data-i18n-label="common.close">{t('common.close')}</button>
+	</form>
+</dialog>
