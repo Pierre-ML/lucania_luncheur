@@ -1,6 +1,6 @@
 [package]
 name = "lanceur"
-version = "0.1.0"
+version = "0.1.1"
 description = "Lanceur - installe, met à jour et lance les applications de Pierre-ML"
 authors = ["Pierre Mouilleseaux Lhuillier"]
 license = "MIT"
