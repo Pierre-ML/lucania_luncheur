@@ -44,6 +44,27 @@
       "maxSizeMb": 500
     },
     {
+      "id": "lucamedia",
+      "enabled": true,
+      "name": "Lucamedia",
+      "description": {
+        "fr": "Téléchargeur de vidéos HLS/m3u8 avec vérification d'intégrité.",
+        "en": "HLS/m3u8 video downloader with integrity checking."
+      },
+      "icon": "lucamedia.svg",
+      "repo": "Pierre-ML/lucamedia",
+      "setup": "Lucamedia-Setup.exe",
+      "updater": "Lucamedia-Update.exe",
+      "identifier": "com.lucamedia.app",
+      "productName": "Lucamedia",
+      "exe": "lucamedia.exe",
+      "waitPidArg": "/MDL_WAITPID=",
+      "keepDataArg": "/UPDATE",
+      "installArgs": ["/S"],
+      "updateArgs": ["/S"],
+      "maxSizeMb": 500
+    },
+    {
       "id": "app2",
       "enabled": false,
       "name": "APP2",
